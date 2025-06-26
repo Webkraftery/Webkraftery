@@ -18,7 +18,7 @@ const Logo = () => {
       {/* Text Logo */}
       <div className="flex flex-col">
         <div className="text-3xl font-bold tracking-tight">
-          <span className="text-blue-600">WEB</span>
+          <span className="text-slate-400">WEB</span>
         </div>
         <div className="text-md font-bold text-blue-600 tracking-wider uppercase -mt-1">
           KRAFTERY
