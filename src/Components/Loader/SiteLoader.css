@@ -1,0 +1,42 @@
+.site-loader-container {
+  position: fixed; /* Fixes the loader to cover the entire viewport */
+  top: 0;
+  left: 0;
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
+  background-color: #000; /* Dark background to contrast with the logo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Ensure it's on top of everything */
+  opacity: 1;
+  transition: opacity 0.5s ease-out; /* Smooth fade-out transition */
+}
+
+/* Optional: Class to hide the loader after content loads */
+.site-loader-container.fade-out {
+  opacity: 0;
+  pointer-events: none; /* Prevents interaction with the faded-out loader */
+}
+
+.site-loader-logo {
+  width: 150px; /* Adjust size as needed */
+  height: auto; /* Maintain aspect ratio */
+  animation: pulse 2s infinite ease-in-out; /* Subtle pulse animation */
+}
+
+/* Keyframes for the pulse animation */
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.05);
+    filter: brightness(1.2); /* Slightly brightens the image */
+  }
+  100% {
+    transform: scale(0.95);
+    filter: brightness(1);
+  }
+}

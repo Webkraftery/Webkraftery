@@ -1,0 +1,8 @@
+@import "tailwindcss";
+/* In your main CSS file */
+
+@theme {
+  
+   --color-primary : #1d0c2e;
+   --color-yellow :#ffc520;
+}
