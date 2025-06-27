@@ -1,7 +1,7 @@
 {
 	"name": "portfolio-backend",
 	"version": "1.0.0",
-	"description": "kunal-backend",
+	"description": "Webkraftery-backend",
 	"main": "index.js",
 	"scripts": {
 		"start": "node index.js",
