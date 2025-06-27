@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useNavigate } from 'react-router-dom';
-import kunalimg from '../../assets/Kunal.jpg'
 import CTA from '../Common/CTA';
 import CTACard from '../Common/CTACard';
 
