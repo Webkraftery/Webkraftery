@@ -1,57 +1,171 @@
-import React, { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
+import { useState, useEffect, useCallback } from "react";
+import { motion } from "framer-motion";
+import clsx from "clsx";
+import TimelineCurve from "../Components/Portfolio/TimelineCurve";
+import TimelineNode from "../Components/Portfolio/TimelineNode";
+import ProjectModal from "../Components/Portfolio/ProjectModal";
+import ZoomControls from "../Components/Portfolio/ZoomControls";
+import { mockProjects } from "../data/mockProjects";
 
 const Portfolio = () => {
-  const headingRef = useRef(null);
+  const [scale, setScale] = useState(1);
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [containerHeight, setContainerHeight] = useState(2000);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   useEffect(() => {
-    const letters = headingRef.current.querySelectorAll('span');
+    const updateLayout = () => {
+      const baseHeight = window.innerHeight < 768 ? 1.2 : 1.5;
+      setContainerHeight(
+        Math.max(
+          window.innerHeight * baseHeight,
+          mockProjects.length * 400 + 600
+        )
+      );
+      setScreenWidth(window.innerWidth);
+    };
 
-    // Initial state
-    gsap.set(letters, { y: -340, opacity: 0 });
-
-    // Drop animation
-    gsap.to(letters, {
-      y: 16,
-      opacity: 1,
-      stagger: 0.1,
-      duration: 2.2,
-      ease: 'bounce.out',
-      onComplete: () => {
-        
-
-        // Optional small bounce (disabled if not needed)
-        gsap.to(letters, {
-          y: 16,
-          repeat: 0,
-          stagger: 0.1,
-          duration: 0.3,
-          ease: 'power1.inOut',
-        });
-      }
-    });
+    updateLayout();
+    window.addEventListener("resize", updateLayout);
+    return () => window.removeEventListener("resize", updateLayout);
   }, []);
 
-  const text = 'Coming soon';
+  const handleZoom = useCallback((delta) => {
+    setScale((prev) => Math.min(Math.max(prev + delta, 0.4), 2.5));
+  }, []);
+
+  const handleProjectClick = (project) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setTimeout(() => setSelectedProject(null), 200);
+  };
+
+  const nodePositions = mockProjects.map((_, i) => {
+    const progress = i / (mockProjects.length - 1);
+    const y = 200 + progress * (containerHeight - 400);
+    const amplitude =
+      screenWidth < 480
+        ? 24
+        : screenWidth < 768
+        ? 18
+        : screenWidth < 1024
+        ? 14
+        : 12 + progress * 6;
+    const x = 50 + Math.sin(progress * Math.PI * 2.8) * amplitude;
+    return { x: `${x}%`, y };
+  });
 
   return (
-    <div className="h-[90vh] bg-gradient-to-b from-purple-950 via-purple-700 to-pink-400 text-white flex items-center justify-center">
-      <div className="h-[70%] flex justify-center items-center">
-        <h2
-          // Shadows added after bounce complete
-          ref={headingRef}
-          className="uppercase md:border-b text-4xl md:text-9xl font-bold tracking-widest font-serif"
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950/80 to-slate-900 overflow-hidden relative mt-14">
+      {/* Grid BG */}
+      <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_2px_2px,rgba(99,102,241,0.1)_1px,transparent_0)] bg-[60px_60px]" />
+
+      {/* Header */}
+      <div className="relative z-10 pt-8 sm:pt-12 pb-6 sm:pb-8 text-center px-4">
+        <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-indigo-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent mb-4 sm:mb-6">
+          Innovation Timeline
+        </h1>
+        <p className="text-slate-300 text-lg sm:text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed">
+          Journey through our breakthrough projects and technological milestones
+        </p>
+      </div>
+
+      {/* Timeline */}
+      <div className="flex justify-center w-full relative">
+        <div
+          className="relative transition-transform duration-300 ease-out px-4 w-full max-w-[1000px]"
+          style={{
+            height: `${containerHeight}px`,
+            transform: `scale(${scale})`,
+            transformOrigin: "center top",
+          }}
         >
-          {text.split('').map((letter, i) => (
-            <span key={i} className="inline-block mx-0.5">
-              {letter}
-            </span>
+          <TimelineCurve scale={1} containerHeight={containerHeight} />
+          {mockProjects.map((project, index) => (
+            <TimelineNode
+              key={project.id}
+              project={project}
+              position={nodePositions[index]}
+              onClick={handleProjectClick}
+              index={index}
+            />
           ))}
-        </h2>
+          {mockProjects.map((project, index) => {
+            const { y } = nodePositions[index];
+            const isEven = index % 2 === 0;
+
+            // Responsive horizontal offset using Tailwind
+            const labelPosition = isEven
+              ? "left-0 pr-[4vw] sm:pr-[5vw] md:pr-[6vw]"
+              : "left-1/2 pl-[4vw] sm:pl-[5vw] md:pl-[6vw]";
+
+            return (
+              <div
+                key={`year-${project.id}`}
+                className={clsx(
+                  "absolute font-bold text-indigo-400/80 pointer-events-none",
+                  "text-xs sm:text-sm md:text-base lg:text-lg",
+                  labelPosition,
+                  "transform -translate-y-1/2 w-1/2 text-ellipsis whitespace-nowrap overflow-hidden",
+                  isEven ? "text-right" : "text-left"
+                )}
+                style={{
+                  top: `${y}px`,
+                }}
+              >
+                {new Date(project.date).getFullYear()}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Zoom Controls */}
+      <ZoomControls
+        className="fixed bottom-6 right-4 z-50 p-1 sm:p-2 bg-slate-900/80 rounded-md shadow-md"
+        scale={scale}
+        onZoomIn={() => handleZoom(0.2)}
+        onZoomOut={() => handleZoom(-0.2)}
+        onReset={() => setScale(1)}
+      />
+
+      {/* Project Modal */}
+      <ProjectModal
+        project={selectedProject}
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+      />
+
+      {/* Info Box */}
+      <div className="fixed top-100 hidden lg:block md:block lg:top-30 left-4 z-40 bg-slate-800/90 backdrop-blur-xl border border-indigo-500/30 rounded-xl p-3 sm:p-4 text-slate-300 max-w-[85vw] sm:max-w-xs md:max-w-sm shadow-lg">
+        <p className="mb-2 text-indigo-400 font-semibold text-xs sm:text-sm">
+          Explore Timeline:
+        </p>
+        <ul className="space-y-1 text-[11px] sm:text-sm">
+          {[
+            { label: "Click nodes for details", color: "bg-indigo-400" },
+            { label: "Use zoom controls", color: "bg-purple-400" },
+            { label: "Hover for preview", color: "bg-cyan-400" },
+          ].map((item, i) => (
+            <li key={i} className="flex items-center gap-2">
+              <div
+                className={clsx(
+                  "w-2 h-2 rounded-full flex-shrink-0",
+                  item.color
+                )}
+              />
+              {item.label}
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
 };
 
 export default Portfolio;
-
