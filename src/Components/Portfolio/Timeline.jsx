@@ -1,6 +1,5 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { motion } from 'framer-motion';
-import clsx from 'clsx';
 import TimelineCurve from './TimelineCurve';
 import TimelineNode from './TimelineNode';
 import ProjectModal from './ProjectModal';
@@ -40,27 +39,50 @@ const Timeline = () => {
     setTimeout(() => setSelectedProject(null), 200);
   };
 
-  const nodePositions = mockProjects.map((_, i) => {
-    const progress = i / (mockProjects.length - 1);
-    const y = 200 + progress * (containerHeight - 400);
-    const amplitude = screenWidth < 480 ? 24 : screenWidth < 768 ? 18 : screenWidth < 1024 ? 14 : 12 + progress * 6;
-    const x = 50 + Math.sin(progress * Math.PI * 2.8) * amplitude;
-    return { x: `${x}%`, y };
-  });
+  const nodePositions = useMemo(() => {
+    return mockProjects.map((_, i) => {
+      const progress = i / (mockProjects.length - 1);
+      const y = 200 + progress * (containerHeight - 400);
+      
+      // Calculate amplitude based on screen size
+      let amplitude;
+      if (screenWidth < 480) amplitude = 24;
+      else if (screenWidth < 768) amplitude = 18;
+      else if (screenWidth < 1024) amplitude = 14;
+      else amplitude = 25 + progress * 6;
+      
+      // Alternate sides for nodes
+      const side = i % 2 === 0 ? 1 : -1;
+      const x = 35 + side * amplitude;
+      
+      return { 
+        x: `${x}%`, 
+        y 
+      };
+    });
+  }, [containerHeight, screenWidth]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950/80 to-slate-900 overflow-hidden relative mt-14">
-      {/* Grid BG */}
-      <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_2px_2px,rgba(99,102,241,0.1)_1px,transparent_0)] bg-[60px_60px]" />
+    <div className="min-h-screen border-2  bg-gradient-to-br from-slate-950 via-indigo-950/80 to-slate-900 overflow-hidden relative">
 
       {/* Header */}
-      <div className="relative z-10 pt-8 sm:pt-12 pb-6 sm:pb-8 text-center px-4">
-        <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-indigo-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent mb-4 sm:mb-6">
+      <div className="relative z-10 pt-12 sm:pt-16 pb-8 sm:pb-12 text-center px-4">
+        <motion.h1 
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-indigo-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent mb-4 sm:mb-6"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
           Innovation Timeline
-        </h1>
-        <p className="text-slate-300 text-lg sm:text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed">
+        </motion.h1>
+        <motion.p 
+          className="text-slate-300 text-lg sm:text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+        >
           Journey through our breakthrough projects and technological milestones
-        </p>
+        </motion.p>
       </div>
 
       {/* Timeline */}
@@ -74,7 +96,7 @@ const Timeline = () => {
           }}
         >
           {/* Timeline curve */}
-          <TimelineCurve scale={1} containerHeight={containerHeight} />
+          <TimelineCurve scale={scale} containerHeight={containerHeight} nodePositions={nodePositions} />
 
           {/* Project nodes with embedded year labels */}
           {mockProjects.map((project, index) => (
@@ -84,6 +106,7 @@ const Timeline = () => {
               position={nodePositions[index]}
               onClick={handleProjectClick}
               index={index}
+              isLast={index === mockProjects.length - 1}
             />
           ))}
         </div>
@@ -91,7 +114,7 @@ const Timeline = () => {
 
       {/* Zoom Controls */}
       <ZoomControls
-        className="fixed bottom-6 right-4 z-50 p-1 sm:p-2 bg-slate-900/80 rounded-md shadow-md"
+        className="fixed bottom-6 right-4 z-50"
         scale={scale}
         onZoomIn={() => handleZoom(0.2)}
         onZoomOut={() => handleZoom(-0.2)}
@@ -105,22 +128,28 @@ const Timeline = () => {
         onClose={handleCloseModal}
       />
 
-      {/* Info Box */}
-<div className="hidden lg:block absolute top-70 left-2 z-40 bg-slate-800/90 backdrop-blur-xl border border-indigo-500/30 rounded-xl p-3 sm:p-4 text-slate-300 max-w-[85vw] sm:max-w-xs shadow-lg">
-  <p className="mb-2 text-indigo-400 font-semibold text-xs sm:text-sm">Explore Timeline:</p>
-  <ul className="space-y-1 text-[11px] sm:text-sm">
-    {[
-      { label: 'Click nodes for details', color: 'bg-indigo-400' },
-      { label: 'Use zoom controls', color: 'bg-purple-400' },
-      { label: 'Hover for preview', color: 'bg-cyan-400' }
-    ].map((item, i) => (
-      <li key={i} className="flex items-center gap-2">
-        <div className={`w-2 h-2 rounded-full flex-shrink-0 ${item.color}`} />
-        {item.label}
-      </li>
-    ))}
-  </ul>
-</div>
+      {/* Floating Info */}
+      <motion.div 
+        className="hidden lg:block absolute top-1/4 left-4 z-40 bg-slate-800/90 backdrop-blur-xl border border-indigo-500/30 rounded-xl p-4 max-w-xs shadow-lg"
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 1, duration: 0.5 }}
+      >
+        <p className="mb-2 text-indigo-400 font-semibold text-sm">Explore Timeline:</p>
+        <ul className="space-y-1 text-sm">
+          {[
+            { label: 'Click nodes for details', color: 'bg-indigo-400' },
+            { label: 'Use zoom controls', color: 'bg-purple-400' },
+            { label: 'Hover for preview', color: 'bg-cyan-400' }
+          ].map((item, i) => (
+            <li key={i} className="flex items-center gap-2">
+              <div className={`w-2 h-2 rounded-full flex-shrink-0 ${item.color}`} />
+              {item.label}
+            </li>
+          ))}
+        </ul>
+      </motion.div>
+
 
     </div>
   );
