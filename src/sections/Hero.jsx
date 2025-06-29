@@ -149,7 +149,7 @@ const Hero = () => {
       >
         <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white 
             drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
-          From Idea to Launch <br></br>We Bring Your Vision To Life
+          The Architects of Your Digital Success
         </h1>
         <Test/>
         
