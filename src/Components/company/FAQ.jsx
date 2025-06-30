@@ -77,11 +77,11 @@ const FAQ = () => {
   // Sample FAQ data
   const faqItems = [
     {
-      question: 'What types of web services does WebKraftry offer?',
-      answer: 'WebKraftry offers a comprehensive suite of web services, including custom website design and development, e-commerce solutions, frontend and backend development, UI/UX design, SEO optimization, digital marketing strategies, and ongoing software maintenance and support. We are your one-stop shop for a robust online presence.'
+      question: 'What types of web services does webkraftery offer?',
+      answer: 'webkraftery offers a comprehensive suite of web services, including custom website design and development, e-commerce solutions, frontend and backend development, UI/UX design, SEO optimization, digital marketing strategies, and ongoing software maintenance and support. We are your one-stop shop for a robust online presence.'
     },
     {
-      question: 'How does WebKraftry approach a new web development project?',
+      question: 'How does webkraftery approach a new web development project?',
       answer: 'Our approach begins with a deep dive into your business goals and target audience. We follow an agile development methodology, ensuring transparent communication, regular feedback loops, and iterative progress. This client-centric development process guarantees that the final web solution aligns perfectly with your vision and delivers measurable results.'
     },
     {
@@ -94,7 +94,7 @@ const FAQ = () => {
     },
     {
       question: 'What kind of ongoing support and maintenance do you provide?',
-      answer: 'WebKraftry offers extensive post-launch support and maintenance packages to ensure your website or application remains secure, updated, and performs optimally. This includes security updates, bug fixes, performance monitoring, content updates, and technical assistance. Our goal is to ensure your digital assets continue to function flawlessly and evolve with your business needs.'
+      answer: 'webkraftery offers extensive post-launch support and maintenance packages to ensure your website or application remains secure, updated, and performs optimally. This includes security updates, bug fixes, performance monitoring, content updates, and technical assistance. Our goal is to ensure your digital assets continue to function flawlessly and evolve with your business needs.'
     },
     {
       question: 'How long does it take to develop a custom website?',
@@ -112,7 +112,7 @@ const FAQ = () => {
             Frequently Asked Questions
           </h1>
           <p ref={introTextRef} className="text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto">
-            Find answers to common questions about WebKraftry's web development, digital marketing, and IT services. If you don't see your question here, feel free to contact us!
+            Find answers to common questions about webkraftery's web development, digital marketing, and IT services. If you don't see your question here, feel free to contact us!
           </p>
         </section>
 
@@ -150,7 +150,7 @@ const FAQ = () => {
           </p>
           <button onClick={()=>{navigate('/contactus')}}
           className="bg-white text-purple-700 font-bold py-4 px-10 rounded-full shadow-lg hover:bg-purple-100 hover:text-purple-900 transition-all duration-300 transform hover:scale-105">
-            Contact WebKraftry 
+            Contact webkraftery 
           </button>
         </section>
 

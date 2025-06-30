@@ -158,7 +158,7 @@ const AboutCompany = () => {
           <div ref={heroImageRef} className="md:w-2/5 flex justify-center md:justify-end z-10">
             <img
               src={img1}
-              alt="WebKraftry Innovation"
+              alt="webkraftery Innovation"
               className="w-full max-w-sm rounded-lg shadow-2xl border-4 border-white transform rotate-3 hover:rotate-0 transition-transform duration-500 ease-in-out"
               onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/600x400/6D28D9/ffffff?text=Digital+Innovation"; }}
             />
@@ -180,7 +180,7 @@ const AboutCompany = () => {
               Full-Spectrum Web Solutions for Every Need
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              At WebKraftry, we offer a comprehensive suite of web services designed to elevate your digital presence and drive business success.
+              At webkraftery, we offer a comprehensive suite of web services designed to elevate your digital presence and drive business success.
             </p>
           </div>
 

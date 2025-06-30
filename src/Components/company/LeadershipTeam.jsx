@@ -107,7 +107,7 @@ const LeadershipTeam = () => {
             Meet Our Leadership Team
           </h1>
           <p ref={introTextRef} className="text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto">
-            At WebKraftry, our success is driven by a passionate team of experts dedicated to digital excellence and client innovation. Get to know the leaders guiding our mission.
+            At webkraftery, our success is driven by a passionate team of experts dedicated to digital excellence and client innovation. Get to know the leaders guiding our mission.
           </p>
         </section>
       

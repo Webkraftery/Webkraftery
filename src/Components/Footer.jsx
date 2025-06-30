@@ -62,7 +62,7 @@ const Footer = () => {
           <address className="not-italic text-gray-400 space-y-2 text-sm">
             <p> Office Address: Vishwash Nagar, Sihani</p>
             <p>Ghaziabad, Uttar Pradesh -201001</p>
-            <p>Email: <a href="mailto:info.WebKraftry@gmail.com" className="hover:text-white">info.WebKraftery@gmail.com</a></p>
+            <p>Email: <a href="mailto:info.webkraftery@gmail.com" className="hover:text-white">info.WebKraftery@gmail.com</a></p>
             <p>Phone: <a href="tel:+918882320645" className="hover:text-white">+91 8882320645</a></p>
             <p>Phone: <a href="tel:+918936950459" className="hover:text-white">+91 8936950459</a></p>
           </address>

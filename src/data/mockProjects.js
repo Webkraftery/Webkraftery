@@ -1,17 +1,39 @@
 export const mockProjects = [
   {
     id: 1,
+    title: "Donation and Team Management Platform for NGO",
+    description: "A donation-based platform for public welfare with real-time community management system that helps each other.",
+    techStack: ["React", "Node.js", "MongoDB", "ExpressJS", "WebSockets"],
+    date: "2025-07-20",
+    teamSize: 2,
+thumbnail:"../../public/PortfolioImages/LL1.png",
+    backgroundImage: [
+      "../../public/PortfolioImages/LL2.png",
+      "../../public/PortfolioImages/LL4.png"
+    ],
+    demoLink: "https://www.ladlilakshmi.com/",
+    githubLink: "https://github.com/LadliLakxmi/LadliLaxmi.git",
+    detailedDescription: "Ladli Lakshmi is a platform that is Created for the Trust for donation and helping each other Financially. Its a platform that helps to create a helping community and help financially to needy one along with their side income.",
+    achievements: [
+      "Balancing Aesthetics & Functionality",
+      "Collaborating with Non-Experts",
+      "Sustainable Solutions for nonprofit's small team",
+      "Integrated Payment Gateway"
+    ]
+  },
+  {
+    id: 2,
     title: "PlanetCode Edtech Platform",
     description: "Interactive coding platform with gamified learning paths and real-time feedback system.",
     techStack: ["React", "Node.js", "MongoDB", "ExpressJS", "WebSockets"],
     date: "2025-04-15",
     teamSize: 4,
-    thumbnail: "https://picsum.photos/id/0/400/300",
+    thumbnail:"../../public/PortfolioImages/planetcode1.png",
     backgroundImage: [
-      "https://picsum.photos/id/1/800/600",
-      "https://picsum.photos/id/20/800/600"
+      "../../public/PortfolioImages/planetcode2.png",
+      "../../public/PortfolioImages/planetcode2.png"
     ],
-    demoLink: "https://planetcode.app",
+    demoLink: "https://planetcode.vercel.app",
     githubLink: "https://github.com/yourname/planetcode",
     detailedDescription: "PlanetCode revolutionizes coding education through interactive challenges, AI-powered feedback, and personalized learning paths. The platform features a virtual coding environment with real-time collaboration tools.",
     achievements: [
@@ -19,28 +41,6 @@ export const mockProjects = [
       "Implemented real-time code execution sandbox",
       "Developed adaptive learning algorithm",
       "Integrated peer programming features"
-    ]
-  },
-  {
-    id: 2,
-    title: "PixelCart E-Commerce",
-    description: "Next-gen e-commerce platform for digital creators with instant payment processing.",
-    techStack: ["Next.js", "Stripe", "Firebase", "Tailwind CSS", "GraphQL"],
-    date: "2025-02-10",
-    teamSize: 3,
-    thumbnail: "https://picsum.photos/id/30/400/300",
-    backgroundImage: [
-      "https://picsum.photos/id/40/800/600",
-      "https://picsum.photos/id/50/800/600"
-    ],
-    demoLink: "https://pixelcart.shop",
-    githubLink: "https://github.com/yourname/pixelcart",
-    detailedDescription: "PixelCart enables digital creators to launch storefronts in minutes with automated digital delivery, subscription management, and analytics dashboard.",
-    achievements: [
-      "Reduced checkout time by 70% with Stripe integration",
-      "Built automated digital product delivery system",
-      "Created sales analytics dashboard",
-      "Implemented dark mode with theme customization"
     ]
   },
   {

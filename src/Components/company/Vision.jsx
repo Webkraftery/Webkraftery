@@ -55,7 +55,7 @@ const Vision = () => {
             Our Mission, Vision & Core Values
           </h1>
           <p className="text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto">
-            At WebKraftry, our purpose is clear, our future is defined, and our actions are guided by unwavering principles. Discover what drives us.
+            At webkraftery, our purpose is clear, our future is defined, and our actions are guided by unwavering principles. Discover what drives us.
           </p>
         </section>
 
@@ -70,7 +70,7 @@ const Vision = () => {
                 Our Mission: Empowering Digital Excellence
               </h2>
               <p className="text-lg text-gray-700 leading-relaxed mb-4">
-                WebKraftry's mission is to empower businesses of all sizes by providing innovative, high-quality web solutions that drive growth, enhance user engagement, and streamline operations. We are dedicated to transforming digital challenges into opportunities for our clients, ensuring their online presence is not just functional, but truly exceptional.
+                webkraftery's mission is to empower businesses of all sizes by providing innovative, high-quality web solutions that drive growth, enhance user engagement, and streamline operations. We are dedicated to transforming digital challenges into opportunities for our clients, ensuring their online presence is not just functional, but truly exceptional.
               </p>
               <p className="text-lg text-gray-700 leading-relaxed">
                 We achieve this through expert web development, strategic digital marketing, and a relentless commitment to client success.
@@ -90,7 +90,7 @@ const Vision = () => {
                 Our Vision: Shaping the Future of Web Services
               </h2>
               <p className="text-lg text-gray-700 leading-relaxed mb-4">
-                Our vision at WebKraftry is to be the leading innovator in web services, recognized globally for our cutting-edge solutions, unparalleled client satisfaction, and significant contributions to the digital landscape. We aim to be the go-to partner for businesses seeking to transform their online presence and achieve sustainable digital growth.
+                Our vision at webkraftery is to be the leading innovator in web services, recognized globally for our cutting-edge solutions, unparalleled client satisfaction, and significant contributions to the digital landscape. We aim to be the go-to partner for businesses seeking to transform their online presence and achieve sustainable digital growth.
               </p>
               <p className="text-lg text-gray-700 leading-relaxed">
                 We envision a future where every business, regardless of size, can harness the full potential of the internet with our support.

@@ -130,7 +130,7 @@ const Timeline = () => {
 
       {/* Floating Info */}
       <motion.div 
-        className="hidden lg:block absolute top-1/4 left-4 z-40 bg-slate-800/90 backdrop-blur-xl border border-indigo-500/30 rounded-xl p-4 max-w-xs shadow-lg"
+        className="hidden lg:block absolute top-20 left-4 z-40 bg-slate-200/90 backdrop-blur-xl border border-indigo-500/30 rounded-xl p-4 max-w-xs shadow-lg"
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 1, duration: 0.5 }}

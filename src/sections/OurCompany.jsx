@@ -282,14 +282,14 @@ export default OurCompany;
 //             Our Company
 //           </p>
 //           <h2 className="text-4xl md:text-5xl font-bold leading-tight text-white">
-//             WebKraftry Private Limited is your trusted development partner in Ghaziabad
+//             webkraftery Private Limited is your trusted development partner in Ghaziabad
 //           </h2>
 //         </div>
 
 //         {/* Right Column */}
 //         <div ref={rightColRef} className="flex items-center">
 //           <p className="text-lg md:text-xl leading-relaxed text-purple-100/90">
-//             WebKraftry Pvt is a privately owned{' '}
+//             webkraftery Pvt is a privately owned{' '}
 //             <strong className="text-white font-semibold">
 //               software development company in Ghaziabad
 //             </strong>{' '}

@@ -182,7 +182,7 @@ const submitContactForm = async (data) => {
                     For general inquiries or project discussions.
                   </p>
                   <a
-                    href="mailto:info.WebKraftry@gmail.com"
+                    href="mailto:info.webkraftery@gmail.com"
                     className="text-indigo-400 hover:underline"
                   >
                     info.WebKraftery@gmail.com
@@ -236,7 +236,7 @@ const submitContactForm = async (data) => {
             </h3>
             <div className="flex space-x-5">
               <a
-                href="https://www.instagram.com/WebKraftry?utm_source=qr"
+                href="https://www.instagram.com/webkraftery?utm_source=qr"
                 className="text-gray-600 hover:text-indigo-600 transition-colors duration-200"
               >
                 {/* LinkedIn Icon */}
@@ -255,7 +255,7 @@ const submitContactForm = async (data) => {
               </a>
               
               <a
-                href="https://www.instagram.com/WebKraftry?utm_source=qr"
+                href="https://www.instagram.com/webkraftery?utm_source=qr"
                 className="text-gray-600 hover:text-indigo-600 transition-colors duration-200"
               >
                 {/* Facebook Icon */}
@@ -478,7 +478,7 @@ const submitContactForm = async (data) => {
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="WebKraftry Office Location - Vishwash Nagar Ghaziabad"
+              title="webkraftery Office Location - Vishwash Nagar Ghaziabad"
             ></iframe>
           </div>
         </section>

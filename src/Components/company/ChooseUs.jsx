@@ -78,7 +78,7 @@ const ChooseUs = () => {
             Why Partner with WebKraftery?
           </h1>
           <p ref={introTextRef} className="text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto">
-            Choosing the right digital partner is crucial for your business success. At WebKraftry, we combine expertise, innovation, and a client-first approach to deliver unparalleled web solutions.
+            Choosing the right digital partner is crucial for your business success. At webkraftery, we combine expertise, innovation, and a client-first approach to deliver unparalleled web solutions.
           </p>
         </section>
 
@@ -152,7 +152,7 @@ const ChooseUs = () => {
               Your One-Stop Digital Partner
             </h3>
             <p className="text-gray-700 leading-relaxed">
-              From responsive website design and e-commerce development to ongoing maintenance and digital advertising, WebKraftry offers a complete suite of web services under one roof, simplifying your digital journey.
+              From responsive website design and e-commerce development to ongoing maintenance and digital advertising, webkraftery offers a complete suite of web services under one roof, simplifying your digital journey.
             </p>
           </div>
         </section>
