@@ -62,6 +62,12 @@ const TestimonialsSection = () => {
       title: "Teacher",
       avatar: "https://placehold.co/100x100/7C3AED/ffffff?text=ST"
     },
+    {
+      quote: "WebKraftery truly delivered an outstanding product. The React application they developed for us is not only incredibly fast and responsive, but it's also remarkably user-friendly, making daily tasks so much smoother. We're genuinely impressed with the performance and intuitive design. I would highly, highly recommend their development team to anyone looking for top-tier results. ",
+      author: "Ashish",
+      title: "Freelencer",
+      avatar: "https://placehold.co/100x100/7C3AED/ffffff?text=A"
+    },
   ];
 
   return (
