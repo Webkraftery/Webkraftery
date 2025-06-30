@@ -119,10 +119,10 @@ const TimelineNode = ({ project, position, onClick, index, isLast }) => {
         className="relative rounded-full 
           w-[clamp(7rem,14vw,18rem)] 
           h-[clamp(7rem,14vw,18rem)] 
-          sm:w-[clamp(8rem,16vw,20rem)] 
-          md:w-[clamp(9rem,17vw,22rem)] 
-          lg:w-[clamp(10rem,18vw,24rem)] 
-          xl:w-[clamp(12rem,19vw,26rem)]
+          sm:w-[clamp(10rem,20vw,20rem)] 
+          md:w-[clamp(10rem,18vw,22rem)] 
+          lg:w-[clamp(10rem,22vw,24rem)] 
+          xl:w-[clamp(12rem,24vw,26rem)]
           bg-gradient-to-br from-indigo-500/20 to-purple-500/20 
           border-4 border-indigo-400/40 
           backdrop-blur-md overflow-hidden shadow-xl"
@@ -141,7 +141,7 @@ const TimelineNode = ({ project, position, onClick, index, isLast }) => {
             backgroundPosition: 'center',
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/30 to-purple-500/30" />
+        
         <motion.div
           className="absolute inset-0 rounded-full border-2 border-indigo-400/50"
           animate={{ scale: [1, 1.2, 1], opacity: [0.6, 0, 0.6] }}

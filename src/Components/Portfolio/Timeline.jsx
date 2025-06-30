@@ -54,7 +54,7 @@ const Timeline = () => {
       
       // Alternate sides for nodes
       const side = i % 2 === 0 ? 1 : -1;
-      const x = 35 + side * amplitude;
+      const x = 25 + side * amplitude;
       
       return { 
         x: `${x}%`, 
