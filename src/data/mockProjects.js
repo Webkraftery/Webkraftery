@@ -71,10 +71,10 @@ thumbnail:"../../PortfolioImages/LL1.png",
     techStack: ["React", "Node.js", "MongoDb", "Expressjs", "TailwindCSS"],
     date: "2025-03-05",
     teamSize: 2,
-    thumbnail: "../../PortfolioImages/VideoKyc1.png",
+    thumbnail: "../../PortfolioImages/Videokyc1.png",
     backgroundImage: [
-       "../../PortfolioImages/VideoKyc2.png",
-       "../../PortfolioImages/VideoKyc3.png"
+       "../../PortfolioImages/Videokyc2.png",
+       "../../PortfolioImages/Videokyc3.png"
     ],
     demoLink: "http://social-chit-chat.netlify.app/",
     githubLink: "https://github.com/PrinceTyagi07/social-frontend",

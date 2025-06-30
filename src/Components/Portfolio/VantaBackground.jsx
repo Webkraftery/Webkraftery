@@ -90,7 +90,7 @@ const VantaBackground = () => {
   return (
     <div
       ref={vantaRef}
-      className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none"
+      className="fixed top-0 left-0 w-full h-screen z-0 pointer-events-none"
     />
   );
 };

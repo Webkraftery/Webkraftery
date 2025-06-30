@@ -62,7 +62,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                     <img
                       src={projectImages[currentImageIndex]}
                       alt="Project"
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-fit"
                     />
                     {projectImages.length > 1 && (
                       <>
