@@ -35,26 +35,30 @@ const Footer = () => {
           <h3 className="text-xl font-bold mb-4 text-white">Quick Links</h3>
           <ul className="space-y-2">
             {['About Us', 'Our Services', 'Why Choose Us', 'Leadership Team', 'FAQs'].map((item, i) => (
-              <li key={i}><a href="#" className="text-gray-400 hover:text-white transition duration-200 text-sm">{item}</a></li>
+              <li key={i}><a href="/" className="text-gray-400 hover:text-white transition duration-200 text-sm">{item}</a></li>
             ))}
           </ul>
         </div>
 
         {/* Services Section */}
         <div>
-          <h3 className="text-xl font-bold mb-4 text-white">Our Services</h3>
-          <ul className="space-y-2">
-            {[
-              'Custom Web Development', 
-              'E-commerce Solutions', 
-              'SEO & Digital Marketing', 
-              'UI/UX Design', 
-              'Software Maintenance'
-            ].map((service, i) => (
-              <li key={i}><a href="#" className="text-gray-400 hover:text-white transition duration-200 text-sm">{service}</a></li>
-            ))}
-          </ul>
-        </div>
+  <h3 className="text-xl font-bold mb-4 text-white">Our Services</h3>
+  <ul className="space-y-2">
+    {[
+      { name: 'Custom Web Development', path: '/solutions/web-development' },
+      { name: 'React Development', path: '/solutions/react-development' },
+      { name: 'Advertising', path: '/solutions/google-advertising' },
+      { name: 'UI/UX Design', path: '/solutions/ui-ux' },
+      { name: 'Software Maintenance', path: '/solutions/software-maintenanace' },
+    ].map((service, i) => (
+      <li key={i}>
+        <a href={service.path} className="text-gray-400 hover:text-white transition duration-200 text-sm">
+          {service.name}
+        </a>
+      </li>
+    ))}
+  </ul>
+</div>
 
         {/* Contact Info Section */}
         <div>

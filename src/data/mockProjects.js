@@ -34,7 +34,7 @@ thumbnail:"../../PortfolioImages/LL1.png",
       "../../PortfolioImages/planetcode2.png"
     ],
     demoLink: "https://planetcode.vercel.app",
-    githubLink: "https://github.com/yourname/planetcode",
+    githubLink: "https://github.com/ShivamR01/PlanetCode-Edtech-project",
     detailedDescription: "PlanetCode revolutionizes coding education through interactive challenges, AI-powered feedback, and personalized learning paths. The platform features a virtual coding environment with real-time collaboration tools.",
     achievements: [
       "Reduced learning curve by 40% with interactive tutorials",
@@ -66,24 +66,47 @@ thumbnail:"../../PortfolioImages/LL1.png",
   },
   {
     id: 4,
-    title: "EcoTrack Sustainability Platform",
-    description: "Carbon footprint tracker with actionable sustainability insights.",
+    title: "Social Media App with Face-detection security",
+    description: " a feature-rich Social Media App developed with a special focus on security and user engagement! 💻📱",
     techStack: ["React", "Node.js", "MongoDb", "Expressjs", "TailwindCSS"],
     date: "2025-03-05",
     teamSize: 2,
-    thumbnail: "",
+    thumbnail: "../../PortfolioImages/VideoKyc1.png",
     backgroundImage: [
-      "",
-      ""
+       "../../PortfolioImages/VideoKyc2.png",
+       "../../PortfolioImages/VideoKyc3.png"
     ],
-    demoLink: "",
-    githubLink: "",
-    detailedDescription: "EcoTrack helps individuals and businesses measure, reduce, and offset their carbon footprint through data-driven insights and challenges.",
+    demoLink: "http://social-chit-chat.netlify.app/",
+    githubLink: "https://github.com/PrinceTyagi07/social-frontend",
+    detailedDescription: "Signup & Login with authentication Automatic Aadhaar-based Video KYC after signup , Create profile & post photos, videos, text updates ,Like, comment, and share posts in real-time , Follow/unfollow users , User dashboard & profile , Secure Logout , Fully responsive UI & smooth UX",
     achievements: [
-      "Integrated with 30+ utility APIs for automatic tracking",
-      "Developed gamified sustainability challenges",
-      "Created carbon offset marketplace",
-      "Designed data visualization dashboard"
+      " Real-time interactivity",
+      "Identity verification workflows",
+      " Efficient API structuring",
+      " Scalable UI architecture"
+    ]
+  },
+  {
+    id: 5,
+    title: "Real Coders",
+    description: "A platform where coders share their work and thoughts as a blog post.",
+    techStack: ["Python", "Flask", "SQl Lite","Bootstrap"],
+    date: "2024-03-05",
+    teamSize: 2,
+    thumbnail: "../../PortfolioImages/RealCoder1.png",
+    backgroundImage: [
+       "../../PortfolioImages/RealCoder2.jpg",
+       "../../PortfolioImages/RealCoder3.jpg",
+       "../../PortfolioImages/RealCoder4.jpg"
+    ],
+    demoLink: "https://therealcoders.pythonanywhere.com/",
+    githubLink: "https://github.com/ShivamR01/realcoder",
+    detailedDescription: "A platform created on Python where user after signup and login can share their thoughts and projects for others that help them in creating a community.",
+    achievements: [
+      "Real-time interactivity",
+      "Identity and Analyse workflows",
+      "Efficient API structuring",
+      " Scalable UI architecture"
     ]
   },
   
