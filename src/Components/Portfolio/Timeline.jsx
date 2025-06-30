@@ -90,7 +90,7 @@ const Timeline = () => {
       {/* Timeline */}
       <div className="flex justify-center w-full relative">
         <div
-          className="relative transition-transform duration-300 ease-out px-4 w-full max-w-[1000px] pb-24"
+          className="relative transition-transform duration-300 ease-out px-4 w-full max-w-[1000px] sm:mb-5 md:mb-20"
           style={{
             height: `${containerHeight}px`,
             transform: `scale(${scale})`,

@@ -118,7 +118,7 @@ const TimelineNode = ({ project, position, onClick, index, isLast }) => {
       <motion.div
         className="relative rounded-full 
           w-[clamp(7rem,14vw,18rem)] 
-          h-[clamp(7rem,14vw,18rem)] 
+          h-[clamp(7rem,20vw,20rem)] 
           sm:w-[clamp(10rem,20vw,20rem)] 
           md:w-[clamp(10rem,18vw,22rem)] 
           lg:w-[clamp(10rem,22vw,24rem)] 
