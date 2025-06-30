@@ -90,8 +90,8 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                           onClick={() => goToImage(idx)}
                           className={`w-14 h-14 rounded-lg overflow-hidden border-2 transition ${
                             idx === currentImageIndex
-                              ? 'border-teal-400'
-                              : 'border-slate-700 hover:border-teal-400'
+                              ? 'border-indigo-600'
+                              : 'border-slate-700 hover:border-indigo-600'
                           }`}
                         >
                           <img
@@ -112,7 +112,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                       {project.techStack.map((tech) => (
                         <span
                           key={tech}
-                          className="px-3 py-1 bg-teal-600/20 text-teal-300 border border-teal-500/40 rounded-full text-sm"
+                          className="px-3 py-1 bg-indigo-600/20 text-indigo-300 border border-indigo-500/40 rounded-full text-sm"
                         >
                           {tech}
                         </span>
@@ -123,13 +123,13 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
 
                 {/* Right side - Title, info, overview, achievements, links */}
                 <div>
-                  <h2 className="text-3xl md:text-4xl font-bold text-white bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text  mb-4">
+                  <h2 className="text-3xl md:text-4xl font-bold text-white bg-gradient-to-r from-indigo-600 to-cyan-400 bg-clip-text  mb-4">
                     {project.title}
                   </h2>
 
                   <div className="flex flex-wrap gap-4 text-slate-400 mb-6">
                     <div className="flex items-center gap-2">
-                      <Calendar size={16} className="text-teal-400" />
+                      <Calendar size={16} className="text-indigo-600" />
                       <span>
                         {new Date(project.date).toLocaleDateString('en-US', {
                           month: 'long',
@@ -138,7 +138,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Users size={16} className="text-teal-400" />
+                      <Users size={16} className="text-indigo-600" />
                       <span>{project.teamSize} team members</span>
                     </div>
                   </div>
@@ -160,7 +160,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                       <ul className="space-y-2 text-sm text-slate-300">
                         {project.achievements.map((item, i) => (
                           <li key={i} className="flex gap-3">
-                            <span className="w-2 h-2 bg-teal-400 rounded-full mt-1" />
+                            <span className="w-2 h-2 bg-indigo-600 rounded-full mt-1" />
                             <span>{item}</span>
                           </li>
                         ))}
@@ -174,7 +174,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                         href={project.demoLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 bg-teal-500 text-white rounded-lg hover:bg-teal-600 transition"
+                        className="flex items-center gap-2 px-4 py-2 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 transition"
                       >
                         <ExternalLink size={16} /> Live Demo
                       </a>

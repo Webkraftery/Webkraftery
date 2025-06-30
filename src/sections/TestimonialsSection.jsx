@@ -57,12 +57,6 @@ const TestimonialsSection = () => {
       avatar: "https://placehold.co/100x100/8B5CF6/ffffff?text=RT"
     },
     {
-      quote: "Working with WebKraftery was a seamless experience. Their development skills are top-notch, and they brought our vision to life perfectly. I like the work they done fo me and highly recommend them.  ",
-      author: "Ashish",
-      title: "Freelencer",
-      avatar: "https://placehold.co/100x100/5B21B6/ffffff?text=A"
-    },
-    {
       quote: "WebKraftery truly delivered an outstanding product. The React application they developed for us is not only incredibly fast and responsive, but it's also remarkably user-friendly, making daily tasks so much smoother. We're genuinely impressed with the performance and intuitive design. I would highly, highly recommend their development team to anyone looking for top-tier results. ",
       author: "Shivam Tyagi",
       title: "Teacher",
@@ -126,12 +120,12 @@ const TestimonialsSection = () => {
                   className="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover mb-6 md:mb-8 border-4 border-white"
                 />
 
-                <p className="text-gray-700 text-lg md:text-xl lg:text-2xl leading-relaxed mb-6 md:mb-8 font-medium italic">
+                <p className="text-gray-700 text-lg md:text-md lg:text-lg leading-relaxed mb-6 md:mb-8 font-medium italic">
                   "{testimonial.quote}"
                 </p>
 
                 <div className="text-gray-900">
-                  <p className="text-lg md:text-xl font-bold mb-1">{testimonial.author}</p>
+                  <p className="text-lg font-bold mb-1">{testimonial.author}</p>
                   <p className="text-gray-500 text-sm md:text-base">{testimonial.title}</p>
                 </div>
               </div>
