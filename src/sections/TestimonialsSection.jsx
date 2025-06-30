@@ -45,34 +45,28 @@ const TestimonialsSection = () => {
 
   const testimonials = [
     {
-      quote: "WebKraftery transformed our online presence. Their expertise and dedication are truly remarkable. We saw a significant increase in engagement and conversions.",
-      author: "Jane Doe",
-      title: "CEO of InnovateCorp",
-      avatar: "https://placehold.co/100x100/A78BFA/ffffff?text=JD"
+      quote: "When I needed a portfolio website, Kunal delivered a dynamic, well-designed solution that exceeded my expectations. His exceptional skills in both frontend and backend development helped bring my vision to life with seamless functionality and an aesthetic that truly reflected my work. The website not only showcased my best projects as a freelancer but also played a key role in positioning me as a Creative Director and attracting quality leads.",
+      author: "Shashwat Prajapati",
+      title: "Creative Director & Founder of Shazofyne",
+      avatar: "https://placehold.co/100x100/A78BFA/ffffff?text=SP"
     },
     {
-      quote: "The team at WebKraftery delivered a stunning e-commerce platform that exceeded our expectations. Their communication and support throughout the project were exceptional.",
-      author: "John Smith",
-      title: "Founder of E-Shop Solutions",
-      avatar: "https://placehold.co/100x100/8B5CF6/ffffff?text=JS"
+      quote: "The team at WebKraftery delivered a stunning Donation platform that exceeded our expectations.From the outset, they demonstrated a remarkable understanding of our needs, translating our vision into a seamless and intuitive platform. Their communication was consistently clear and proactive, keeping us informed at every stage of the development process. Furthermore, the support they provided throughout the entire project. We are incredibly pleased with the final product and the collaborative journey.",
+      author: "Rajeswar Tyagi",
+      title: "Trusty Of Ladlilaxmi Janhit Trust ",
+      avatar: "https://placehold.co/100x100/8B5CF6/ffffff?text=RT"
     },
     {
-      quote: "Working with WebKraftery was a seamless experience. Their game development skills are top-notch, and they brought our vision to life perfectly.",
-      author: "Emily White",
-      title: "Game Studio Lead",
-      avatar: "https://placehold.co/100x100/5B21B6/ffffff?text=EW"
+      quote: "Working with WebKraftery was a seamless experience. Their development skills are top-notch, and they brought our vision to life perfectly. I like the work they done fo me and highly recommend them.  ",
+      author: "Ashish",
+      title: "Freelencer",
+      avatar: "https://placehold.co/100x100/5B21B6/ffffff?text=A"
     },
     {
-      quote: "Their SEO optimization services significantly boosted our organic traffic. WebKraftery is a reliable partner for digital growth.",
-      author: "Michael Brown",
-      title: "Marketing Director",
-      avatar: "https://placehold.co/100x100/6D28D9/ffffff?text=MB"
-    },
-    {
-      quote: "The React application developed by WebKraftery is incredibly fast and user-friendly. Highly recommend their development team!",
-      author: "Sarah Green",
-      title: "Product Manager",
-      avatar: "https://placehold.co/100x100/7C3AED/ffffff?text=SG"
+      quote: "WebKraftery truly delivered an outstanding product. The React application they developed for us is not only incredibly fast and responsive, but it's also remarkably user-friendly, making daily tasks so much smoother. We're genuinely impressed with the performance and intuitive design. I would highly, highly recommend their development team to anyone looking for top-tier results. ",
+      author: "Shivam Tyagi",
+      title: "Teacher",
+      avatar: "https://placehold.co/100x100/7C3AED/ffffff?text=ST"
     },
   ];
 
