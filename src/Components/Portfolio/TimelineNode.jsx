@@ -147,7 +147,7 @@ const TimelineNode = ({ project, position, onClick, index, isLast }) => {
           animate={{ scale: [1, 1.2, 1], opacity: [0.6, 0, 0.6] }}
           transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
         />
-        <div className="absolute bottom-0 left-0 right-0 text-center bg-gradient-to-t from-slate-900/90 to-transparent p-2 sm:p-3 md:p-4">
+        <div className="absolute bottom-0 left-0 right-0 text-center bg-gradient-to-t from-slate-900/90 to-transparent p-2 sm:p-4 md:p-8">
           <h3 className="w-full px-2 text-white font-semibold 
             text-xs sm:text-sm md:text-base lg:text-lg 
             text-center leading-tight break-words">

@@ -42,7 +42,7 @@ const Timeline = () => {
   const nodePositions = useMemo(() => {
     return mockProjects.map((_, i) => {
       const progress = i / (mockProjects.length - 1);
-      const y = 200 + progress * (containerHeight - 400);
+      const y = 100 + progress * (containerHeight - 400);
       
       // Calculate amplitude based on screen size
       let amplitude;
@@ -66,7 +66,7 @@ const Timeline = () => {
     <div className="min-h-screen border-2  bg-gradient-to-br from-slate-950 via-indigo-950/80 to-slate-900 overflow-hidden relative">
 
       {/* Header */}
-      <div className="relative z-10 pt-12 sm:pt-16 pb-8 sm:pb-12 text-center px-4">
+      <div className="relative z-10 pt-14 sm:pt-16 sm:pb-12 text-center px-4">
         <motion.h1 
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-indigo-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent mb-4 sm:mb-6"
           initial={{ opacity: 0, y: -20 }}
