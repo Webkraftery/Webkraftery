@@ -128,7 +128,7 @@ const OurCompany = () => {
         {/* Right Column */}
         <div ref={rightColRef} className="flex items-center text-justify">
           <p className="text-lg md:text-xl leading-relaxed text-purple-100/90">
-            WebKraftery Pvt. Ltd. is a privately owned{" "}
+            WebKraftery  is a privately owned{" "}
             <strong className="text-white font-semibold">
               software development company
             </strong>{" "}
