@@ -2,7 +2,7 @@ import { Plus, Minus, RotateCcw } from 'lucide-react';
 
 const ZoomControls = ({ scale, onZoomIn, onZoomOut, onReset }) => {
   return (
-    <div className="fixed top-25 right-4 sm:right-6 flex flex-col items-center gap-2 z-40">
+    <div className="fixed top-25 right-4 bg-emerald-400 sm:right-6 flex flex-col items-center gap-2 z-40">
       <button
         onClick={onZoomIn}
         className="bg-indigo-600/10 text-indigo-300 p-2 rounded-md hover:bg-indigo-600/20 transition disabled:opacity-40"

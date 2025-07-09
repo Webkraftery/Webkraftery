@@ -12,7 +12,7 @@ thumbnail:"../../PortfolioImages/LL1.png",
       "../../PortfolioImages/LL4.png"
     ],
     demoLink: "https://www.ladlilakshmi.com/",
-    githubLink: "https://github.com/LadliLakxmi/LadliLaxmi.git",
+    githubLink: "https://github.com/PrinceTyagi07/LadliLaxmi",
     detailedDescription: "Ladli Lakshmi is a platform that is Created for the Trust for donation and helping each other Financially. Its a platform that helps to create a helping community and help financially to needy one along with their side income.",
     achievements: [
       "Balancing Aesthetics & Functionality",
