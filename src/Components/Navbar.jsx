@@ -31,10 +31,21 @@ const Navbar = () => {
 
   // Handle Scroll & Route changes
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
-    setIsOpen(false); // Close menu on route change
-    return () => window.removeEventListener("scroll", handleScroll);
+    let rafId = null;
+    const handleScroll = () => {
+      // RAF throttle: only calls setState once per animation frame
+      if (rafId !== null) return;
+      rafId = requestAnimationFrame(() => {
+        setScrolled(window.scrollY > 20);
+        rafId = null;
+      });
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    setIsOpen(false);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, [location]);
 
   useEffect(() => {

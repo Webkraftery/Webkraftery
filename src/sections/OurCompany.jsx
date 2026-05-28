@@ -2,9 +2,7 @@ import React, { useEffect, useRef, memo } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+// Plugin registered globally in main.jsx
 
 const OurCompany = () => {
   const containerRef = useRef(null);

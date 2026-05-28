@@ -2,9 +2,7 @@ import React, { useEffect, useRef, memo } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
-}
+// Plugin registered globally in main.jsx
 
 const ValueCard = memo(({ v, i }) => (
   <div 
@@ -32,6 +30,14 @@ const ValueCard = memo(({ v, i }) => (
   </div>
 ));
 
+// Static data — defined at module level so it's never re-created on re-renders
+const values = [
+  { title: "Radical\nInnovation", desc: "We invent protocols, we don't just follow patterns.", tag: "01", span: "lg:col-span-8", color: "#FF5F1F", text: "#000", height: "h-[400px] md:h-[500px]" },
+  { title: "Atomic\nQuality", desc: "Precision down to the millisecond.", tag: "02", span: "lg:col-span-4", color: "#0047AB", text: "#FFF", height: "h-[400px] md:h-[500px]" },
+  { title: "Fluid\nLogic", desc: "Systems that breathe and adapt in real-time.", tag: "03", span: "lg:col-span-4", color: "#00FA9A", text: "#000", height: "h-[350px] md:h-[400px]" },
+  { title: "Legacy\nScale", desc: "Building the infrastructure for the next century.", tag: "04", span: "lg:col-span-8", color: "#1A1A1A", text: "#FFF", height: "h-[350px] md:h-[400px]" }
+];
+
 const OurValues = () => {
   const containerRef = useRef(null);
 
@@ -56,13 +62,6 @@ const OurValues = () => {
     }, containerRef);
     return () => ctx.revert();
   }, []);
-
-  const values = [
-    { title: "Radical\nInnovation", desc: "We invent protocols, we don't just follow patterns.", tag: "01", span: "lg:col-span-8", color: "#FF5F1F", text: "#000", height: "h-[400px] md:h-[500px]" },
-    { title: "Atomic\nQuality", desc: "Precision down to the millisecond.", tag: "02", span: "lg:col-span-4", color: "#0047AB", text: "#FFF", height: "h-[400px] md:h-[500px]" },
-    { title: "Fluid\nLogic", desc: "Systems that breathe and adapt in real-time.", tag: "03", span: "lg:col-span-4", color: "#00FA9A", text: "#000", height: "h-[350px] md:h-[400px]" },
-    { title: "Legacy\nScale", desc: "Building the infrastructure for the next century.", tag: "04", span: "lg:col-span-8", color: "#1A1A1A", text: "#FFF", height: "h-[350px] md:h-[400px]" }
-  ];
 
   return (
     <section ref={containerRef} className="relative py-32 md:py-48 bg-[#F0F0F0] overflow-visible contain-paint">

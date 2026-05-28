@@ -1,100 +1,102 @@
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar";
-import Portfolio from "./Pages/Portfolio";
-import ContactUs from "./sections/ContactUs";
-import AboutCompany from "./Components/company/AboutCompany";
-import Awards from "./Components/company/Awards";
-import Careers from "./Components/company/Careers";
-import ChooseUs from "./Components/company/ChooseUs";
-import FAQ from "./Components/company/FAQ";
-import LeadershipTeam from "./Components/company/LeadershipTeam";
-import Locations from "./Components/company/Locations";
-import Vision from "./Components/company/Vision";
-import Media from "./Components/company/Media";
-import BackendDevelopment from "./Components/itSolutions/BackendDevelopment";
-import FrontendDevelopment from "./Components/itSolutions/FrontendDevelopment";
-import GoogleAds from "./Components/itSolutions/GoogleAds";
-import ReactDevelopment from "./Components/itSolutions/ReactDevelopment";
-import SEOoptimization from "./Components/itSolutions/SEOoptimization";
-import SoftwareMaintenance from "./Components/itSolutions/SoftwareMaintenance";
-import UIUX from "./Components/itSolutions/UIUX";
-import WebDevelopment from "./Components/itSolutions/WebDevelopment";
-import HomePage from "./Pages/HomePage";
-import Footer from "./Components/Footer";
 import ScrollToTop from "./services/ScrollToTop";
 import SiteLoader from "./Components/Loader/SiteLoader";
 
+// Lazy-loaded routes — reduces initial bundle size and parse time on mobile
+const HomePage = lazy(() => import("./Pages/HomePage"));
+const Portfolio = lazy(() => import("./Pages/Portfolio"));
+const ContactUs = lazy(() => import("./sections/ContactUs"));
+const AboutCompany = lazy(() => import("./Components/company/AboutCompany"));
+const Awards = lazy(() => import("./Components/company/Awards"));
+const Careers = lazy(() => import("./Components/company/Careers"));
+const ChooseUs = lazy(() => import("./Components/company/ChooseUs"));
+const FAQ = lazy(() => import("./Components/company/FAQ"));
+const LeadershipTeam = lazy(() => import("./Components/company/LeadershipTeam"));
+const Locations = lazy(() => import("./Components/company/Locations"));
+const Vision = lazy(() => import("./Components/company/Vision"));
+const Media = lazy(() => import("./Components/company/Media"));
+const BackendDevelopment = lazy(() => import("./Components/itSolutions/BackendDevelopment"));
+const FrontendDevelopment = lazy(() => import("./Components/itSolutions/FrontendDevelopment"));
+const GoogleAds = lazy(() => import("./Components/itSolutions/GoogleAds"));
+const ReactDevelopment = lazy(() => import("./Components/itSolutions/ReactDevelopment"));
+const SEOoptimization = lazy(() => import("./Components/itSolutions/SEOoptimization"));
+const SoftwareMaintenance = lazy(() => import("./Components/itSolutions/SoftwareMaintenance"));
+const UIUX = lazy(() => import("./Components/itSolutions/UIUX"));
+const WebDevelopment = lazy(() => import("./Components/itSolutions/WebDevelopment"));
+import Footer from "./Components/Footer";
+
 const App = () => {
   const [loading, setLoading] = useState(true);
-   useEffect(() => {
-    // Simulate content loading (e.g., fetching data, loading other components)
-    // In a real application, you'd replace this with actual data fetching logic.
+  useEffect(() => {
     const timer = setTimeout(() => {
-      setLoading(false); // Hide the loader after a simulated delay
-    }, 500); // Adjust this delay based on your typical load time
-
-    return () => clearTimeout(timer); // Cleanup the timer
+      setLoading(false);
+    }, 500);
+    return () => clearTimeout(timer);
   }, []);
   return (
     <div className="">
-       {loading && <SiteLoader />}
+      {loading && <SiteLoader />}
       <Router>
-        <ScrollToTop/>
+        <ScrollToTop />
         <Navbar />
         <div>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/contactus" element={<ContactUs />} />
+          <Suspense fallback={null}>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/portfolio" element={<Portfolio />} />
+              <Route path="/contactus" element={<ContactUs />} />
 
-            {/* Company Routes */}
-            <Route path="/company/aboutcompany" element={<AboutCompany />} />
-            <Route path="/company/awards" element={<Awards />} />
-            <Route path="/company/careers" element={<Careers />} />
-            <Route path="/company/why-choose-us" element={<ChooseUs />} />
-            <Route path="/company/faq" element={<FAQ />} />
-            <Route path="/company/team" element={<LeadershipTeam />} />
-            <Route path="/company/locations" element={<Locations />} />
-            <Route path="/company/vision-mission" element={<Vision />} />
-            <Route path="/company/media" element={<Media />} />
+              {/* Company Routes */}
+              <Route path="/company/aboutcompany" element={<AboutCompany />} />
+              <Route path="/company/awards" element={<Awards />} />
+              <Route path="/company/careers" element={<Careers />} />
+              <Route path="/company/why-choose-us" element={<ChooseUs />} />
+              <Route path="/company/faq" element={<FAQ />} />
+              <Route path="/company/team" element={<LeadershipTeam />} />
+              <Route path="/company/locations" element={<Locations />} />
+              <Route path="/company/vision-mission" element={<Vision />} />
+              <Route path="/company/media" element={<Media />} />
 
-            {/* It solutions */}
-            <Route
-              path="/solutions/backend-development"
-              element={<BackendDevelopment />}
-            />
-            <Route
-              path="/solutions/frontend-development"
-              element={<FrontendDevelopment />}
-            />
-            <Route
-              path="/solutions/google-advertising"
-              element={<GoogleAds />}
-            />
-            <Route
-              path="/solutions/react-development"
-              element={<ReactDevelopment />}
-            />
-            <Route
-              path="/solutions/seo-optimization"
-              element={<SEOoptimization />}
-            />
-            <Route
-              path="/solutions/software-maintenanace"
-              element={<SoftwareMaintenance />}
-            />
-            <Route path="/solutions/ui-ux" element={<UIUX />} />
-            <Route
-              path="/solutions/web-development"
-              element={<WebDevelopment />}
-            />
-          </Routes>
+              {/* It solutions */}
+              <Route
+                path="/solutions/backend-development"
+                element={<BackendDevelopment />}
+              />
+              <Route
+                path="/solutions/frontend-development"
+                element={<FrontendDevelopment />}
+              />
+              <Route
+                path="/solutions/google-advertising"
+                element={<GoogleAds />}
+              />
+              <Route
+                path="/solutions/react-development"
+                element={<ReactDevelopment />}
+              />
+              <Route
+                path="/solutions/seo-optimization"
+                element={<SEOoptimization />}
+              />
+              <Route
+                path="/solutions/software-maintenanace"
+                element={<SoftwareMaintenance />}
+              />
+              <Route path="/solutions/ui-ux" element={<UIUX />} />
+              <Route
+                path="/solutions/web-development"
+                element={<WebDevelopment />}
+              />
+            </Routes>
+          </Suspense>
         </div>
-        <Footer/>
+        <Footer />
       </Router>
     </div>
   );
 };
 
 export default App;
+

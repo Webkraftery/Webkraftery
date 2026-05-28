@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
+// Plugin registered globally in main.jsx
 
 const CTA = () => {
   const navigate = useNavigate();

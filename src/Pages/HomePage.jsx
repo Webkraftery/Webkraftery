@@ -8,9 +8,9 @@ import CTA from "../Components/Common/CTA";
 import ProjectVault from "../sections/ProjectShowcase";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Lenis from "@studio-freight/lenis"; // External Library for buttery smooth scroll
+import Lenis from "@studio-freight/lenis";
 
-gsap.registerPlugin(ScrollTrigger);
+// gsap.registerPlugin is called once globally in main.jsx
 
 const HomePage = () => {
   const containerRef = useRef(null);
@@ -22,6 +22,8 @@ const HomePage = () => {
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
+      // Disable touch smoothing — native iOS/Android momentum is faster than JS simulation
+      smoothTouch: false,
     });
 
     function raf(time) {
@@ -147,15 +149,13 @@ const HomePage = () => {
       
       <style>{`
         .reveal-section {
-          /* translateZ(0) forces GPU acceleration */
-          will-change: transform, opacity;
-          transform: translateZ(0); 
+          /* GPU layer is promoted by GSAP automatically during animation — no permanent will-change needed */
+          transform: translateZ(0);
           background: #020202;
           backface-visibility: hidden;
         }
         .content-inner {
-           transform-style: preserve-3d;
-           will-change: transform;
+          transform-style: preserve-3d;
         }
       `}</style>
     </div>
