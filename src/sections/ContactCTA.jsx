@@ -33,8 +33,8 @@ const ContactCTA = () => {
         <div className="premium-grid">
           
           {/* Left — Headline spans 7 columns */}
-          <div className="col-span-12 lg:col-span-7">
-            <h2 className="cta-reveal font-display text-[clamp(2.5rem,7vw,6.5rem)] font-black text-white leading-[0.9] tracking-[-0.03em] mb-8">
+          <div className="col-span-12 lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
+            <h2 className="cta-reveal font-display text-[clamp(2.8rem,8vw,6.5rem)] font-black text-white leading-[0.9] tracking-[-0.03em] mb-8">
               Ready to start your next project?
             </h2>
             <p className="cta-reveal text-white/80 text-[15px] md:text-[20px] leading-relaxed mb-10 max-w-[480px]">
@@ -42,7 +42,7 @@ const ContactCTA = () => {
             </p>
             <a
               href="mailto:info@webkraftery.com"
-              className="cta-reveal flex md:inline-flex justify-center items-center gap-4 px-6 md:px-9 py-4 bg-white text-[var(--bg-dark)] font-display font-bold text-[12px] md:text-[14px] tracking-[0.15em] uppercase rounded-full border border-white hover:bg-[var(--bg-dark)] hover:text-white hover:border-[var(--bg-dark)] transition-all duration-400 group shadow-lg w-full md:w-max"
+              className="cta-reveal flex md:inline-flex justify-center items-center gap-4 px-8 md:px-9 py-4 md:py-5 bg-white text-[var(--bg-dark)] font-display font-bold text-[13px] md:text-[14px] tracking-[0.15em] uppercase rounded-full border border-white hover:bg-[var(--bg-dark)] hover:text-white hover:border-[var(--bg-dark)] transition-all duration-400 group shadow-lg w-full md:w-max"
             >
               Send us a message
               <ArrowUpRight className="group-hover:rotate-45 transition-transform duration-400 w-4 h-4 md:w-5 md:h-5" />
@@ -50,7 +50,7 @@ const ContactCTA = () => {
           </div>
 
           {/* Right — Contact info spans 4 columns, pushed right */}
-          <div className="col-span-12 lg:col-span-4 lg:col-start-9 flex flex-col justify-center gap-10 mt-16 lg:mt-0">
+          <div className="col-span-12 lg:col-span-4 lg:col-start-9 flex flex-col items-center lg:items-start justify-center gap-8 mt-16 lg:mt-0 border-t border-white/10 lg:border-t-0 pt-12 lg:pt-0">
             {[
               { icon: Mail, label: "Email", value: "info@webkraftery.com", href: "mailto:info@webkraftery.com" },
               { icon: Phone, label: "Phone", value: "+91 989 979 4119", href: "tel:+919899794119" },
@@ -58,7 +58,7 @@ const ContactCTA = () => {
             ].map((item) => {
               const Icon = item.icon;
               return (
-                <div key={item.label} className="cta-reveal flex items-start gap-6">
+                <div key={item.label} className="cta-reveal flex flex-col lg:flex-row items-center lg:items-start gap-4 lg:gap-6 text-center lg:text-left">
                   <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white/10 flex items-center justify-center shrink-0">
                     <Icon strokeWidth={2} className="text-white w-5 h-5 md:w-6 md:h-6" />
                   </div>

@@ -23,15 +23,15 @@ const Footer = () => {
       <div className="premium-container relative z-10">
         
         {/* Massive Email CTA */}
-        <div className="mb-24 md:mb-32">
+        <div className="mb-24 md:mb-32 flex flex-col items-center lg:items-start text-center lg:text-left">
           <p className="font-display text-[12px] font-bold tracking-[0.3em] text-[var(--accent)] uppercase mb-6">
             Got a project in mind?
           </p>
           <a 
             href="mailto:info@webkraftery.com" 
-            className="group flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12 w-full"
+            className="group flex flex-col md:flex-row items-center gap-6 md:gap-12 w-full lg:w-max"
           >
-            <h2 className="font-display text-[clamp(1.5rem,7vw,7rem)] font-black text-white tracking-[-0.03em] transition-colors duration-500 group-hover:text-white/70 break-all md:break-normal">
+            <h2 className="font-display text-[clamp(1.5rem,7vw,7rem)] font-black text-white tracking-[-0.03em] transition-colors duration-500 group-hover:text-white/70 break-all md:break-normal text-center lg:text-left">
               info@webkraftery.com
             </h2>
             <div className="w-14 h-14 md:w-24 md:h-24 rounded-full border border-white/20 flex items-center justify-center bg-white/5 group-hover:bg-[var(--accent)] group-hover:border-[var(--accent)] transition-all duration-500 shrink-0">
@@ -41,14 +41,14 @@ const Footer = () => {
         </div>
 
         {/* Info Grid */}
-        <div className="flex flex-col md:flex-row justify-between gap-12 lg:gap-16 mb-20 md:pr-12">
+        <div className="flex flex-col md:flex-row justify-between gap-12 lg:gap-16 mb-20 md:pr-12 text-center md:text-left">
           
           {/* Column 1: Navigation */}
-          <div className="w-full md:w-auto">
+          <div className="w-full md:w-auto flex flex-col items-center md:items-start">
             <h4 className="font-display text-[11px] font-bold tracking-[0.2em] text-white/40 uppercase mb-8">
               Navigation
             </h4>
-            <ul className="space-y-4">
+            <ul className="space-y-4 flex flex-col items-center md:items-start">
               {["services", "expertise", "testimonials", "contact"].map((id) => (
                 <li key={id}>
                   <button
@@ -66,11 +66,11 @@ const Footer = () => {
           </div>
 
           {/* Column 2: Socials */}
-          <div className="w-full md:w-auto">
+          <div className="w-full md:w-auto flex flex-col items-center md:items-start mt-8 md:mt-0">
             <h4 className="font-display text-[11px] font-bold tracking-[0.2em] text-white/40 uppercase mb-8">
               Socials
             </h4>
-            <ul className="space-y-4">
+            <ul className="space-y-4 flex flex-col items-center md:items-start">
               {[
                 { name: "LinkedIn", icon: <FaLinkedinIn size={16} />, href: "#" },
                 { name: "Twitter / X", icon: <FaTwitter size={16} />, href: "#" },
@@ -97,19 +97,19 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-8">
+        <div className="border-t border-white/10 pt-10 pb-4 flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
           
           {/* Logo */}
-          <div className="flex-shrink-0">
-            <img src={logo} alt="WebKraftery" className="h-8 md:h-12 w-auto object-contain" />
+          <div className="flex-shrink-0 w-full md:w-auto flex justify-center md:justify-start">
+            <img src={logo} alt="WebKraftery" className="h-10 md:h-12 w-auto object-contain" />
           </div>
 
-          <div className="flex flex-wrap gap-6 md:gap-8 text-[13px] text-white/40 font-medium w-full md:w-auto">
+          <div className="flex flex-wrap justify-center md:justify-end gap-6 md:gap-8 text-[13px] text-white/40 font-medium w-full md:w-auto">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
           </div>
 
-          <p className="text-white/40 text-[13px] font-medium w-full md:w-auto">
+          <p className="text-white/40 text-[13px] font-medium w-full md:w-auto mt-2 md:mt-0">
             © {year} WebKraftery. All rights reserved.
           </p>
           

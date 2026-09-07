@@ -102,17 +102,17 @@ const Services = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="services" className="bg-[#F7F5F2] text-[var(--text-dark)] overflow-hidden h-auto lg:h-screen flex flex-col justify-center">
+    <section ref={sectionRef} id="services" className="relative bg-[#F7F5F2] text-[var(--text-dark)] overflow-hidden h-auto lg:h-screen flex flex-col justify-center">
       
-      {/* Absolute Header */}
-      <div className="absolute top-8 md:top-16 left-6 md:left-12 lg:left-24 z-50 pointer-events-none">
+      {/* Header (Static on mobile, Absolute on desktop) */}
+      <div className="relative lg:absolute top-0 lg:top-16 left-0 lg:left-24 z-50 pointer-events-none px-6 md:px-12 lg:px-0 pt-16 lg:pt-0 mb-12 lg:mb-0">
         <span className="font-display text-[var(--accent)] text-[12px] md:text-[14px] font-bold tracking-[0.25em] uppercase block">
           Our Capabilities
         </span>
       </div>
 
       {/* Horizontal Scroll Track (Desktop) / Vertical Stack (Mobile) */}
-      <div ref={scrollContainerRef} className="flex flex-col lg:flex-row h-auto lg:h-[85vh] w-full lg:w-[400vw] gap-24 lg:gap-0 pt-24 pb-12 lg:py-0">
+      <div ref={scrollContainerRef} className="flex flex-col lg:flex-row h-auto lg:h-[85vh] w-full lg:w-[400vw] gap-32 lg:gap-0 pt-0 lg:pt-0 pb-32 lg:pb-0">
         {services.map((svc, i) => (
           <div 
             key={svc.id}
@@ -121,7 +121,7 @@ const Services = () => {
           >
             
             {/* Constrained container width to prevent stretching and clipping */}
-            <div className="w-full max-w-[1440px] mx-auto h-auto lg:h-full flex flex-col-reverse lg:flex-row items-center justify-center gap-12 lg:gap-12">
+            <div className="w-full max-w-[1440px] mx-auto h-auto lg:h-full flex flex-col-reverse lg:flex-row items-center justify-center gap-10 lg:gap-12">
               
               {/* Left Content Half */}
               <div className="w-full lg:w-[45%] flex flex-col justify-center h-full z-10 lg:pr-12">
@@ -135,11 +135,11 @@ const Services = () => {
                   </div>
                 </div>
 
-                <h3 className="font-display text-[3rem] lg:text-[4.5rem] font-black leading-[0.95] tracking-tight mb-8 text-[var(--text-dark)]">
+                <h3 className="font-display text-[clamp(2.5rem,8vw,4.5rem)] font-black leading-[1.05] lg:leading-[0.95] tracking-tight mb-8 text-[var(--text-dark)]">
                   {svc.title}
                 </h3>
 
-                <p className="text-[var(--text-body)] text-[16px] lg:text-[18px] leading-[1.8] max-w-[480px] font-light mb-12">
+                <p className="text-[var(--text-body)] text-[15px] md:text-[16px] lg:text-[18px] leading-[1.8] max-w-[480px] font-light mb-12">
                   {svc.desc}
                 </p>
 

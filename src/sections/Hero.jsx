@@ -37,7 +37,7 @@ const Hero = () => {
       <div className="video-overlay" />
 
       {/* Content */}
-      <div className="relative z-10 w-full pt-32 pb-32">
+      <div className="relative z-10 w-full py-24 md:py-32">
         <div className="premium-container premium-grid">
           
           {/* Main Headline Block - Centered */}
@@ -52,18 +52,18 @@ const Hero = () => {
 
             {/* Staggered Headline */}
             <h1 className="mb-10 md:mb-16">
-              <div className="overflow-hidden">
-                <span className="hero-line block font-display text-[clamp(2.8rem,10vw,8rem)] font-black text-white leading-[0.95] md:leading-[0.9] tracking-[-0.03em] text-left">
+              <div className="overflow-hidden pb-2 md:pb-0">
+                <span className="hero-line block font-display text-[clamp(2.8rem,10vw,8rem)] font-black text-white leading-none md:leading-[0.9] tracking-[-0.03em] text-left">
                   We build
                 </span>
               </div>
-              <div className="overflow-hidden">
-                <span className="hero-line block font-display text-[clamp(2.8rem,10vw,8rem)] font-black leading-[0.95] md:leading-[0.9] tracking-[-0.03em] text-center text-white/50">
+              <div className="overflow-hidden pb-2 md:pb-0">
+                <span className="hero-line block font-display text-[clamp(2.8rem,10vw,8rem)] font-black leading-none md:leading-[0.9] tracking-[-0.03em] text-center text-white/50">
                   websites that
                 </span>
               </div>
-              <div className="overflow-hidden">
-                <span className="hero-line block font-display text-[clamp(2.8rem,10vw,8rem)] font-black leading-[0.95] md:leading-[0.9] tracking-[-0.03em] text-right text-[var(--accent)]">
+              <div className="overflow-hidden pb-2 md:pb-0">
+                <span className="hero-line block font-display text-[clamp(2.8rem,10vw,8rem)] font-black leading-none md:leading-[0.9] tracking-[-0.03em] text-right text-[var(--accent)]">
                   actually work.
                 </span>
               </div>

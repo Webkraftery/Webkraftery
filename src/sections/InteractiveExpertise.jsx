@@ -139,7 +139,7 @@ const InteractiveExpertise = () => {
               key={i}
               ref={(el) => (itemRefs.current[i] = el)}
               data-index={i}
-              className="expertise-item group relative flex items-center justify-between py-8 md:py-16 border-b border-white/10 cursor-pointer overflow-hidden"
+              className="expertise-item group relative flex flex-col md:flex-row items-start md:items-center justify-between py-8 md:py-16 border-b border-white/10 cursor-pointer overflow-hidden gap-6 md:gap-0"
               onMouseEnter={() => setActiveIdx(i)}
             >
               {/* Animated Background Highlight */}
@@ -156,7 +156,7 @@ const InteractiveExpertise = () => {
                 </h3>
               </div>
 
-              <div className="relative z-10 flex items-center gap-4 md:gap-8 pointer-events-none">
+              <div className="relative z-10 flex items-center justify-between md:justify-end gap-4 md:gap-8 pointer-events-none w-full md:w-auto">
                 <p className={`hidden lg:block font-display text-[16px] font-light tracking-wide transition-all duration-700 ${
                   activeIdx === i ? "text-white opacity-100 translate-x-0" : "text-white/0 opacity-0 -translate-x-6"
                 }`}>

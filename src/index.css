@@ -30,8 +30,8 @@
   --font-body: 'Inter', sans-serif;
 
   /* ── Structure & Spacing ── */
-  --section-px: clamp(1.25rem, 6vw, 4rem);
-  --section-py: clamp(4rem, 12vw, 12rem);
+  --section-px: clamp(1.5rem, 6vw, 4rem);
+  --section-py: clamp(5rem, 15vw, 12rem);
   --max-width: 1440px;
 
   /* ── Transitions ── */
