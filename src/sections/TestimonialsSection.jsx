@@ -1,163 +1,137 @@
-import React, { useEffect, useRef, useState, memo } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
 const testimonials = [
   {
-    quote:
-      "Kunal delivered a dynamic, well-designed solution. His skills helped position me as a Creative Director.",
+    quote: "They delivered a dynamic, well-designed solution that truly elevated my digital presence. His attention to detail and technical skills are exceptional.",
     author: "Shashwat Prajapati",
     role: "Founder, Shazofyne",
-    color: "bg-[#FF5F1F]",
-    text: "text-black",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
   },
   {
-    quote:
-      "Stunning Donation platform. They translated our vision into a seamless and intuitive platform.",
+    quote: "They translated our vision into a seamless and intuitive platform. The result exceeded our expectations — truly professional work.",
     author: "Rajeswar Tyagi",
     role: "Trustee, Ladlilaxmi",
-    color: "bg-[#0047AB]",
-    text: "text-white",
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
   },
   {
-    quote:
-      "The React application is incredibly fast. We're genuinely impressed with the performance.",
+    quote: "The application is incredibly fast and the user experience is flawless. We're genuinely impressed with the quality of work delivered.",
     author: "Shivam Tyagi",
     role: "Senior Educator",
-    color: "bg-[#00FA9A]",
-    text: "text-black",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face",
   },
 ];
 
-// 1. Optimized Card: Uses will-change to prep the GPU
-const TestimonialCard = memo(({ t, index, cardRef }) => (
-  <div
-    ref={cardRef}
-    className={`absolute w-full max-w-[550px] p-10 md:p-16 rounded-[1.5rem] border-[3px] border-black shadow-[15px_15px_0px_0px_#000] opacity-0 pointer-events-none will-change-transform transform-gpu ${t.color} ${t.text}`}
-  >
-    <div className="flex justify-between items-center mb-10 font-mono text-[10px] font-black uppercase opacity-60">
-      <span>ID://VERIFIED</span>
-      <span>00{index + 1}</span>
-    </div>
-
-    <p className="text-3xl md:text-5xl font-black tracking-tighter leading-[0.9] uppercase italic mb-10">
-      "{t.quote}"
-    </p>
-
-    <div className="pt-6 border-t-[3px] border-current">
-      <h4 className="text-xl md:text-2xl font-black uppercase leading-none">
-        {t.author}
-      </h4>
-      <p className="text-[10px] font-bold opacity-60 uppercase tracking-widest mt-1">
-        {t.role}
-      </p>
-    </div>
-  </div>
-));
-
 const TestimonialsSection = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const containerRef = useRef(null);
-  const cardsRef = useRef([]);
+  const [active, setActive] = useState(0);
+  const sectionRef = useRef(null);
+  const quoteRef = useRef(null);
 
   useEffect(() => {
-    // 2. Use GSAP Context for memory cleanup
-    let ctx = gsap.context(() => {
-      const currentCard = cardsRef.current[activeIndex];
-      const prevIndex =
-        (activeIndex - 1 + testimonials.length) % testimonials.length;
-      const prevCard = cardsRef.current[prevIndex];
+    const timer = setInterval(() => {
+      setActive((p) => (p + 1) % testimonials.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
 
-      // Reset hidden cards: move them off-screen or hide them to stop GPU overdraw
-      cardsRef.current.forEach((card, i) => {
-        if (i !== activeIndex && i !== prevIndex) {
-          gsap.set(card, {
-            opacity: 0,
-            y: 50,
-            scale: 0.9,
-            pointerEvents: "none",
-          });
+  useEffect(() => {
+    if (quoteRef.current) {
+      gsap.fromTo(quoteRef.current, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" });
+    }
+  }, [active]);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".testimonial-block",
+        { y: 60, opacity: 0 },
+        {
+          y: 0, opacity: 1, duration: 1.2, ease: "power3.out",
+          scrollTrigger: { trigger: sectionRef.current, start: "top 75%", toggleActions: "play none none reverse" },
         }
-      });
+      );
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
 
-      // Animate Active Card
-      gsap.to(currentCard, {
-        y: 0,
-        scale: 1,
-        opacity: 1,
-        pointerEvents: "auto",
-        zIndex: 30,
-        duration: 0.7,
-        ease: "power4.out",
-        force3D: true, // Forces GPU layer
-      });
-
-      // Animate Leaving Card
-      if (prevCard) {
-        gsap.to(prevCard, {
-          y: -100,
-          scale: 0.95,
-          opacity: 0,
-          zIndex: 10,
-          duration: 0.5,
-          ease: "power2.inOut",
-          force3D: true,
-        });
-      }
-    }, containerRef);
-
-    return () => ctx.revert(); // Cleanup GSAP to prevent memory leaks
-  }, [activeIndex]);
-
-  const nextSlide = () =>
-    setActiveIndex((prev) => (prev + 1) % testimonials.length);
+  const t = testimonials[active];
+  const prev = () => setActive((p) => (p - 1 + testimonials.length) % testimonials.length);
+  const next = () => setActive((p) => (p + 1) % testimonials.length);
 
   return (
-    <section
-      ref={containerRef}
-      className="relative min-h-screen bg-[#F0F0F0] py-20 px-6 flex items-center overflow-hidden contain-paint"
-    >
-      <div className="absolute top-0 right-0 opacity-[0.03] select-none pointer-events-none">
-        <span className="text-[25vh] font-black uppercase italic leading-none">
-          VERDICT
-        </span>
-      </div>
-
-      <div className="max-w-[1400px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        <div className="lg:col-span-5 space-y-6">
-          <div className="inline-block px-3 py-1 border-2 border-black rounded-full">
-            <span className="text-black text-[9px] font-black tracking-widest uppercase font-mono italic">
-              Proof_Log
+    <section ref={sectionRef} id="testimonials" className="premium-section bg-[var(--bg-light)]">
+      <div className="premium-container">
+        
+        {/* Editorial Header */}
+        <div className="premium-grid mb-16 md:mb-24">
+          <div className="col-span-12 md:col-span-10 lg:col-span-8">
+            <span className="font-display text-[var(--accent)] text-[12px] md:text-[14px] font-bold tracking-[0.25em] uppercase block mb-6">
+              Client Voices
             </span>
-          </div>
-          <h2 className="text-6xl md:text-8xl font-black text-black leading-[0.8] tracking-tighter uppercase">
-            THE <br />{" "}
-            <span
-              className="text-transparent"
-              style={{ WebkitTextStroke: "1.5px black" }}
-            >
-              VERDICT.
-            </span>
-          </h2>
-
-          <div className="pt-6">
-            <button
-              onClick={nextSlide}
-              className="px-8 py-4 bg-black text-white font-black rounded-full hover:bg-indigo-600 transition-colors active:scale-95 uppercase text-[10px] tracking-widest flex items-center gap-4 shadow-xl"
-            >
-              Next Evidence <span>→</span>
-            </button>
+            <h2 className="font-display text-[clamp(3rem,6vw,5.5rem)] font-black text-[var(--text-dark)] leading-[0.95] tracking-[-0.03em]">
+              Don't just take our word for it<span className="text-[var(--accent)]">.</span>
+            </h2>
           </div>
         </div>
 
-        <div className="lg:col-span-7 relative h-[450px] md:h-[550px] flex items-center justify-center">
-          {testimonials.map((t, i) => (
-            <TestimonialCard
-              key={i}
-              t={t}
-              index={i}
-              cardRef={(el) => (cardsRef.current[i] = el)}
-            />
-          ))}
+        {/* Testimonial Core */}
+        <div className="testimonial-block premium-grid">
+          <div className="col-span-12 lg:col-span-9 lg:col-start-3">
+            <div ref={quoteRef} className="relative">
+              
+              <Quote size={56} strokeWidth={1} className="text-[var(--accent)] mb-10 opacity-40 hidden md:block absolute -left-20 -top-4" />
+
+              <blockquote className="font-display text-[clamp(1.5rem,3.5vw,3rem)] font-medium text-[var(--text-dark)] leading-[1.3] tracking-tight mb-12">
+                "{t.quote}"
+              </blockquote>
+
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-5">
+                  <img
+                    src={t.avatar}
+                    alt={t.author}
+                    className="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover shadow-lg"
+                  />
+                  <div>
+                    <p className="font-display font-bold text-[var(--text-dark)] text-[16px] md:text-[18px]">{t.author}</p>
+                    <p className="text-[var(--text-muted)] text-[14px] md:text-[15px]">{t.role}</p>
+                  </div>
+                </div>
+
+                {/* Controls */}
+                <div className="hidden md:flex items-center gap-4">
+                  <button onClick={prev} className="w-12 h-12 rounded-full border border-[var(--border-light)] flex items-center justify-center text-[var(--text-muted)] hover:border-[var(--accent)] hover:text-[var(--accent)] hover:bg-[var(--accent-soft)] transition-all duration-300">
+                    <ChevronLeft size={20} />
+                  </button>
+                  <button onClick={next} className="w-12 h-12 rounded-full border border-[var(--border-light)] flex items-center justify-center text-[var(--text-muted)] hover:border-[var(--accent)] hover:text-[var(--accent)] hover:bg-[var(--accent-soft)] transition-all duration-300">
+                    <ChevronRight size={20} />
+                  </button>
+                </div>
+              </div>
+              
+              {/* Mobile Controls */}
+              <div className="flex md:hidden items-center justify-between mt-10 border-t border-[var(--border-light)] pt-6">
+                <div className="flex gap-2">
+                  {testimonials.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setActive(i)}
+                      className={`rounded-full transition-all duration-400 ${
+                        i === active ? "w-8 h-2 bg-[var(--accent)]" : "w-2 h-2 bg-[var(--border-light)]"
+                      }`}
+                    />
+                  ))}
+                </div>
+                <div className="flex gap-2">
+                  <button onClick={prev} className="w-10 h-10 rounded-full border border-[var(--border-light)] flex items-center justify-center text-[var(--text-muted)]"><ChevronLeft size={16} /></button>
+                  <button onClick={next} className="w-10 h-10 rounded-full border border-[var(--border-light)] flex items-center justify-center text-[var(--text-muted)]"><ChevronRight size={16} /></button>
+                </div>
+              </div>
+
+            </div>
+          </div>
         </div>
       </div>
     </section>

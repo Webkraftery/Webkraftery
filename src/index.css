@@ -1,8 +1,132 @@
 @import "tailwindcss";
-/* In your main CSS file */
 
-@theme {
-  
-   --color-primary : #1d0c2e;
-   --color-yellow :#ffc520;
+/* ═══════════════════════════════════════════════════════════════════════════
+   WEBKRAFTERY V2 — PREMIUM EDITORIAL DESIGN SYSTEM
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Solid Color Palette (No gradients) ── */
+  --bg-dark: #0F0F0F;
+  --bg-darker: #080808;
+  --bg-light: #F7F5F2;
+  --bg-cream: #EDE8E3;
+  --bg-warm: #FAF8F5;
+
+  --accent: #FF4D2E;
+  --accent-hover: #E63E1F;
+  --accent-soft: #FFF0ED;
+
+  --text-dark: #1A1A1A;
+  --text-body: #3D3D3D;
+  --text-muted: #7A7A7A;
+  --text-light: #F0EDED;
+  --text-light-muted: #9A9A9A;
+
+  --border-light: #E5E1DC;
+  --border-dark: #222222;
+
+  /* ── Typography ── */
+  --font-display: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* ── Structure & Spacing ── */
+  --section-px: clamp(1.25rem, 6vw, 4rem);
+  --section-py: clamp(4rem, 12vw, 12rem);
+  --max-width: 1440px;
+
+  /* ── Transitions ── */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Reset ── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-dark);
+  color: var(--text-dark);
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+
+::selection {
+  background: var(--accent);
+  color: white;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ── Typography ── */
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* ── Utilities ── */
+.premium-container {
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--section-px);
+  padding-right: var(--section-px);
+}
+
+.premium-section {
+  padding-top: var(--section-py);
+  padding-bottom: var(--section-py);
+}
+
+.premium-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+}
+@media (min-width: 768px) {
+  .premium-grid { gap: 2rem; }
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* ── Ticker ── */
+@keyframes ticker-scroll {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+.ticker-track {
+  display: inline-flex;
+  animation: ticker-scroll 25s linear infinite;
+}
+
+/* ── Video overlay ── */
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(15, 15, 15, 0.7) 0%,
+    rgba(15, 15, 15, 0.4) 50%,
+    rgba(15, 15, 15, 0.95) 100%
+  );
 }
