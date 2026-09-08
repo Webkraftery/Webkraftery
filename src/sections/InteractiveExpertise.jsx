@@ -36,7 +36,7 @@ const InteractiveExpertise = () => {
   useEffect(() => {
     // Only run on mobile/tablet (hover handles desktop)
     const mediaQuery = window.matchMedia("(max-width: 1024px)");
-    
+
     if (mediaQuery.matches) {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -64,7 +64,7 @@ const InteractiveExpertise = () => {
     videoRefs.current.forEach((vid, i) => {
       if (vid) {
         if (i === activeIdx) {
-          vid.play().catch(() => {});
+          vid.play().catch(() => { });
         } else {
           vid.pause();
         }
@@ -105,9 +105,8 @@ const InteractiveExpertise = () => {
           muted
           loop
           playsInline
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
-            activeIdx === i ? "opacity-50" : "opacity-0"
-          }`}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${activeIdx === i ? "opacity-50" : "opacity-0"
+            }`}
           style={{ willChange: "opacity" }}
         >
           <source src={area.video} type="video/mp4" />
@@ -119,14 +118,14 @@ const InteractiveExpertise = () => {
       <div className="absolute inset-0 bg-[var(--bg-dark)]/30" />
 
       <div className="relative z-10 w-full premium-container">
-        
-        {/* Grid Header */}
-        <div className="premium-grid mb-16 md:mb-24">
-          <div className="col-span-12 md:col-span-8 lg:col-span-6">
-            <span className="font-display text-[var(--accent)] text-[12px] md:text-[14px] font-bold tracking-[0.25em] uppercase block mb-6">
+
+        {/* Header */}
+        <div className="mb-14 sm:mb-16 md:mb-20 lg:mb-28">
+          <div className="max-w-3xl">
+            <span className="font-display text-[var(--accent)] text-[11px] sm:text-[12px] md:text-[14px] font-bold tracking-[0.25em] uppercase block mb-4 sm:mb-6">
               Our Expertise
             </span>
-            <h2 className="font-display text-[clamp(2.5rem,6vw,5.5rem)] font-black text-white leading-[0.95] tracking-[-0.03em]">
+            <h2 className="font-display text-[clamp(2rem,6vw,5.5rem)] font-black text-white leading-[1] sm:leading-[0.95] tracking-[-0.03em]">
               Pushing boundaries<span className="text-[var(--accent)]">.</span>
             </h2>
           </div>
@@ -139,33 +138,30 @@ const InteractiveExpertise = () => {
               key={i}
               ref={(el) => (itemRefs.current[i] = el)}
               data-index={i}
-              className="expertise-item group relative flex flex-col md:flex-row items-start md:items-center justify-between py-8 md:py-16 border-b border-white/10 cursor-pointer overflow-hidden gap-6 md:gap-0"
+              className="expertise-item group relative flex flex-col sm:flex-row items-start sm:items-center justify-between py-6 sm:py-8 md:py-12 lg:py-16 border-b border-white/10 cursor-pointer overflow-hidden gap-4 sm:gap-6 md:gap-0"
               onMouseEnter={() => setActiveIdx(i)}
             >
               {/* Animated Background Highlight */}
               <div className={`absolute inset-0 bg-white/[0.03] origin-bottom transition-transform duration-700 ease-out ${activeIdx === i ? 'scale-y-100' : 'scale-y-0 lg:group-hover:scale-y-100'}`} />
-              
-              <div className="relative z-10 flex flex-col md:flex-row md:items-baseline gap-2 md:gap-12 pointer-events-none">
-                <span className="text-[var(--accent)] font-display text-sm md:text-base font-bold tracking-[0.2em] w-12 hidden md:block">
+
+              <div className="relative z-10 flex items-baseline gap-3 sm:gap-4 md:gap-12 pointer-events-none">
+                <span className="text-[var(--accent)] font-display text-[12px] sm:text-sm md:text-base font-bold tracking-[0.2em] w-8 sm:w-12 shrink-0">
                   0{i + 1}
                 </span>
-                <h3 className={`font-display text-[clamp(1.8rem,5vw,5rem)] font-black uppercase tracking-[-0.02em] transition-all duration-700 ${
-                  activeIdx === i ? "text-white translate-x-2 md:translate-x-6" : "text-white/40"
-                }`}>
+                <h3 className={`font-display text-[clamp(1.4rem,4.5vw,5rem)] font-black uppercase tracking-[-0.02em] transition-all duration-700 ${activeIdx === i ? "text-white translate-x-1 sm:translate-x-2 md:translate-x-6" : "text-white/40"
+                  }`}>
                   {area.title}
                 </h3>
               </div>
 
-              <div className="relative z-10 flex items-center justify-between md:justify-end gap-4 md:gap-8 pointer-events-none w-full md:w-auto">
-                <p className={`hidden lg:block font-display text-[16px] font-light tracking-wide transition-all duration-700 ${
-                  activeIdx === i ? "text-white opacity-100 translate-x-0" : "text-white/0 opacity-0 -translate-x-6"
-                }`}>
+              <div className="relative z-10 flex items-center justify-between sm:justify-end gap-4 md:gap-8 pointer-events-none w-full sm:w-auto pl-11 sm:pl-0">
+                <p className={`block sm:hidden lg:block font-display text-[13px] sm:text-[14px] lg:text-[16px] font-light tracking-wide transition-all duration-700 ${activeIdx === i ? "text-white/70 lg:text-white opacity-100 translate-x-0" : "text-white/40 sm:text-white/0 sm:opacity-0 sm:-translate-x-6"
+                  }`}>
                   {area.subtitle}
                 </p>
-                <div className={`w-12 h-12 md:w-16 md:h-16 rounded-full border flex items-center justify-center transition-all duration-700 shrink-0 ${
-                  activeIdx === i ? "border-[var(--accent)] bg-[var(--accent)] text-white" : "border-white/20 text-white/40 lg:group-hover:border-white/50 lg:group-hover:text-white"
-                }`}>
-                  <ArrowRight size={24} className={activeIdx === i ? "-rotate-45 transition-transform duration-700 w-5 h-5 md:w-7 md:h-7" : "transition-transform duration-700 w-5 h-5 md:w-7 md:h-7"} />
+                <div className={`w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-full border flex items-center justify-center transition-all duration-700 shrink-0 ${activeIdx === i ? "border-[var(--accent)] bg-[var(--accent)] text-white" : "border-white/20 text-white/40 lg:group-hover:border-white/50 lg:group-hover:text-white"
+                  }`}>
+                  <ArrowRight className={`w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 ${activeIdx === i ? "-rotate-45 transition-transform duration-700" : "transition-transform duration-700"}`} />
                 </div>
               </div>
             </div>

@@ -65,72 +65,63 @@ const TestimonialsSection = () => {
       <div className="premium-container">
         
         {/* Editorial Header */}
-        <div className="premium-grid mb-16 md:mb-24">
-          <div className="col-span-12 md:col-span-10 lg:col-span-8">
-            <span className="font-display text-[var(--accent)] text-[12px] md:text-[14px] font-bold tracking-[0.25em] uppercase block mb-6">
+        <div className="mb-10 sm:mb-12 md:mb-16 lg:mb-24">
+          <div className="max-w-3xl">
+            <span className="font-display text-[var(--accent)] text-[11px] sm:text-[12px] md:text-[14px] font-bold tracking-[0.25em] uppercase block mb-4 sm:mb-6">
               Client Voices
             </span>
-            <h2 className="font-display text-[clamp(3rem,6vw,5.5rem)] font-black text-[var(--text-dark)] leading-[0.95] tracking-[-0.03em]">
+            <h2 className="font-display text-[clamp(2rem,6vw,5.5rem)] font-black text-[var(--text-dark)] leading-[1.05] sm:leading-[0.95] tracking-[-0.03em]">
               Don't just take our word for it<span className="text-[var(--accent)]">.</span>
             </h2>
           </div>
         </div>
 
         {/* Testimonial Core */}
-        <div className="testimonial-block premium-grid">
-          <div className="col-span-12 lg:col-span-9 lg:col-start-3">
-            <div ref={quoteRef} className="relative">
-              
-              <Quote size={56} strokeWidth={1} className="text-[var(--accent)] mb-10 opacity-40 hidden md:block absolute -left-20 -top-4" />
+        <div className="testimonial-block max-w-4xl mx-auto lg:ml-[16.67%] lg:mr-0">
+          <div ref={quoteRef} className="relative">
+            
+            <Quote size={40} strokeWidth={1} className="text-[var(--accent)] mb-6 sm:mb-8 md:mb-10 opacity-40 md:absolute md:-left-16 lg:-left-20 md:-top-2 md:w-14 md:h-14" />
 
-              <blockquote className="font-display text-[clamp(1.5rem,3.5vw,3rem)] font-medium text-[var(--text-dark)] leading-[1.3] tracking-tight mb-12">
-                "{t.quote}"
-              </blockquote>
+            <blockquote className="font-display text-[clamp(1.25rem,3vw,3rem)] font-medium text-[var(--text-dark)] leading-[1.35] sm:leading-[1.3] tracking-tight mb-8 sm:mb-10 md:mb-12">
+              "{t.quote}"
+            </blockquote>
 
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-5">
-                  <img
-                    src={t.avatar}
-                    alt={t.author}
-                    className="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover shadow-lg"
-                  />
-                  <div>
-                    <p className="font-display font-bold text-[var(--text-dark)] text-[16px] md:text-[18px]">{t.author}</p>
-                    <p className="text-[var(--text-muted)] text-[14px] md:text-[15px]">{t.role}</p>
-                  </div>
-                </div>
-
-                {/* Controls */}
-                <div className="hidden md:flex items-center gap-4">
-                  <button onClick={prev} className="w-12 h-12 rounded-full border border-[var(--border-light)] flex items-center justify-center text-[var(--text-muted)] hover:border-[var(--accent)] hover:text-[var(--accent)] hover:bg-[var(--accent-soft)] transition-all duration-300">
-                    <ChevronLeft size={20} />
-                  </button>
-                  <button onClick={next} className="w-12 h-12 rounded-full border border-[var(--border-light)] flex items-center justify-center text-[var(--text-muted)] hover:border-[var(--accent)] hover:text-[var(--accent)] hover:bg-[var(--accent-soft)] transition-all duration-300">
-                    <ChevronRight size={20} />
-                  </button>
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 sm:gap-4">
+              <div className="flex items-center gap-4 sm:gap-5">
+                <img
+                  src={t.avatar}
+                  alt={t.author}
+                  className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full object-cover shadow-lg"
+                />
+                <div>
+                  <p className="font-display font-bold text-[var(--text-dark)] text-[15px] sm:text-[16px] md:text-[18px]">{t.author}</p>
+                  <p className="text-[var(--text-muted)] text-[13px] sm:text-[14px] md:text-[15px]">{t.role}</p>
                 </div>
               </div>
-              
-              {/* Mobile Controls */}
-              <div className="flex md:hidden items-center justify-between mt-10 border-t border-[var(--border-light)] pt-6">
-                <div className="flex gap-2">
+
+              {/* Controls — visible on all sizes */}
+              <div className="flex items-center gap-3 sm:gap-4">
+                {/* Dots — mobile only */}
+                <div className="flex gap-1.5 sm:hidden mr-2">
                   {testimonials.map((_, i) => (
                     <button
                       key={i}
                       onClick={() => setActive(i)}
                       className={`rounded-full transition-all duration-400 ${
-                        i === active ? "w-8 h-2 bg-[var(--accent)]" : "w-2 h-2 bg-[var(--border-light)]"
+                        i === active ? "w-6 h-2 bg-[var(--accent)]" : "w-2 h-2 bg-[var(--border-light)]"
                       }`}
                     />
                   ))}
                 </div>
-                <div className="flex gap-2">
-                  <button onClick={prev} className="w-10 h-10 rounded-full border border-[var(--border-light)] flex items-center justify-center text-[var(--text-muted)]"><ChevronLeft size={16} /></button>
-                  <button onClick={next} className="w-10 h-10 rounded-full border border-[var(--border-light)] flex items-center justify-center text-[var(--text-muted)]"><ChevronRight size={16} /></button>
-                </div>
+                <button onClick={prev} className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[var(--border-light)] flex items-center justify-center text-[var(--text-muted)] hover:border-[var(--accent)] hover:text-[var(--accent)] hover:bg-[var(--accent-soft)] transition-all duration-300">
+                  <ChevronLeft size={18} className="sm:w-5 sm:h-5" />
+                </button>
+                <button onClick={next} className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[var(--border-light)] flex items-center justify-center text-[var(--text-muted)] hover:border-[var(--accent)] hover:text-[var(--accent)] hover:bg-[var(--accent-soft)] transition-all duration-300">
+                  <ChevronRight size={18} className="sm:w-5 sm:h-5" />
+                </button>
               </div>
-
             </div>
+
           </div>
         </div>
       </div>

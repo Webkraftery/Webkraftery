@@ -24,33 +24,33 @@ const ContactCTA = () => {
     <section ref={sectionRef} id="contact" className="premium-section bg-[var(--accent)] relative overflow-hidden">
       {/* Large background text */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none w-full text-center overflow-hidden mix-blend-overlay">
-        <span className="font-display text-[18vw] md:text-[22vw] font-black text-white/[0.04] uppercase tracking-tighter whitespace-nowrap">
+        <span className="font-display text-[25vw] sm:text-[22vw] md:text-[22vw] font-black text-white/[0.04] uppercase tracking-tighter whitespace-nowrap">
           Let's Talk
         </span>
       </div>
 
       <div className="premium-container relative z-10">
-        <div className="premium-grid">
-          
-          {/* Left — Headline spans 7 columns */}
-          <div className="col-span-12 lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
-            <h2 className="cta-reveal font-display text-[clamp(2.8rem,8vw,6.5rem)] font-black text-white leading-[0.9] tracking-[-0.03em] mb-8">
+        <div className="flex flex-col lg:flex-row gap-12 sm:gap-14 lg:gap-8">
+
+          {/* Left — Headline */}
+          <div className="flex-1 lg:max-w-[60%] flex flex-col items-start text-left gap-2">
+            <h2 className="cta-reveal font-display text-[clamp(2.2rem,7vw,6.5rem)] font-black text-white leading-[1] sm:leading-[0.95] tracking-[-0.03em] mb-5 sm:mb-6 md:mb-8">
               Ready to start your next project?
             </h2>
-            <p className="cta-reveal text-white/80 text-[15px] md:text-[20px] leading-relaxed mb-10 max-w-[480px]">
+            <p className="cta-reveal text-white/80 text-[14px] sm:text-[15px] md:text-[20px] leading-relaxed mb-8 sm:mb-10 max-w-[480px]">
               We'd love to hear about your idea. Drop us a line and let's create something exceptional together.
             </p>
             <a
               href="mailto:info@webkraftery.com"
-              className="cta-reveal flex md:inline-flex justify-center items-center gap-4 px-8 md:px-9 py-4 md:py-5 bg-white text-[var(--bg-dark)] font-display font-bold text-[13px] md:text-[14px] tracking-[0.15em] uppercase rounded-full border border-white hover:bg-[var(--bg-dark)] hover:text-white hover:border-[var(--bg-dark)] transition-all duration-400 group shadow-lg w-full md:w-max"
+              className="cta-reveal contact-cta-btn group w-full sm:w-auto"
             >
               Send us a message
-              <ArrowUpRight className="group-hover:rotate-45 transition-transform duration-400 w-4 h-4 md:w-5 md:h-5" />
+              <ArrowUpRight className="group-hover:rotate-45 transition-transform duration-300 w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
             </a>
           </div>
 
-          {/* Right — Contact info spans 4 columns, pushed right */}
-          <div className="col-span-12 lg:col-span-4 lg:col-start-9 flex flex-col items-center lg:items-start justify-center gap-8 mt-16 lg:mt-0 border-t border-white/10 lg:border-t-0 pt-12 lg:pt-0">
+          {/* Right — Contact info */}
+          <div className="flex flex-col items-start justify-center gap-6 sm:gap-8 border-t border-white/10 lg:border-t-0 pt-8 sm:pt-10 lg:pt-0 lg:pl-8">
             {[
               { icon: Mail, label: "Email", value: "info@webkraftery.com", href: "mailto:info@webkraftery.com" },
               { icon: Phone, label: "Phone", value: "+91 989 979 4119", href: "tel:+919899794119" },
@@ -58,27 +58,27 @@ const ContactCTA = () => {
             ].map((item) => {
               const Icon = item.icon;
               return (
-                <div key={item.label} className="cta-reveal flex flex-col lg:flex-row items-center lg:items-start gap-4 lg:gap-6 text-center lg:text-left">
-                  <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white/10 flex items-center justify-center shrink-0">
-                    <Icon strokeWidth={2} className="text-white w-5 h-5 md:w-6 md:h-6" />
+                <div key={item.label} className="cta-reveal flex items-start gap-4 sm:gap-5 text-left">
+                  <div className="w-11 h-11 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-xl sm:rounded-2xl bg-white/10 flex items-center justify-center shrink-0">
+                    <Icon strokeWidth={2} className="text-white w-5 h-5 sm:w-5 sm:h-5 md:w-6 md:h-6" />
                   </div>
-                  <div className="pt-1 overflow-hidden">
-                    <span className="block text-white/50 text-[11px] md:text-[13px] font-display font-bold tracking-[0.2em] uppercase mb-1.5">
+                  <div className="pt-0.5 sm:pt-1 overflow-hidden min-w-0">
+                    <span className="block text-white/50 text-[10px] sm:text-[11px] md:text-[13px] font-display font-bold tracking-[0.2em] uppercase mb-1 sm:mb-1.5">
                       {item.label}
                     </span>
                     {item.href ? (
-                      <a href={item.href} className="text-white font-medium text-[15px] md:text-[20px] hover:underline underline-offset-4 decoration-white/30 hover:decoration-white transition-all break-all md:break-normal">
+                      <a href={item.href} className="text-white font-medium text-[14px] sm:text-[15px] md:text-[20px] hover:underline underline-offset-4 decoration-white/30 hover:decoration-white transition-all break-words">
                         {item.value}
                       </a>
                     ) : (
-                      <span className="text-white font-medium text-[15px] md:text-[20px]">{item.value}</span>
+                      <span className="text-white font-medium text-[14px] sm:text-[15px] md:text-[20px]">{item.value}</span>
                     )}
                   </div>
                 </div>
               );
             })}
           </div>
-          
+
         </div>
       </div>
 

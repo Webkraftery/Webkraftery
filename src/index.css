@@ -29,9 +29,9 @@
   --font-display: 'Outfit', sans-serif;
   --font-body: 'Inter', sans-serif;
 
-  /* ── Structure & Spacing ── */
-  --section-px: clamp(1.5rem, 6vw, 4rem);
-  --section-py: clamp(5rem, 15vw, 12rem);
+  /* ── Structure & Spacing (Mobile-first) ── */
+  --section-px: clamp(1.25rem, 5vw, 4rem);
+  --section-py: clamp(3.5rem, 10vw, 12rem);
   --max-width: 1440px;
 
   /* ── Transitions ── */
@@ -96,10 +96,21 @@ a {
 .premium-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: 1.5rem;
+  gap: 1rem;
+}
+@media (min-width: 640px) {
+  .premium-grid { gap: 1.5rem; }
 }
 @media (min-width: 768px) {
   .premium-grid { gap: 2rem; }
+}
+
+/* ── Mobile-specific section padding overrides ── */
+@media (max-width: 639px) {
+  .premium-section {
+    padding-top: clamp(3rem, 8vw, 5rem);
+    padding-bottom: clamp(3rem, 8vw, 5rem);
+  }
 }
 
 /* ── Scrollbar ── */
@@ -129,4 +140,188 @@ a {
     rgba(15, 15, 15, 0.4) 50%,
     rgba(15, 15, 15, 0.95) 100%
   );
+}
+
+/* ── Mobile touch targets ── */
+@media (max-width: 767px) {
+  button, a {
+    min-height: 44px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SERVICES SECTION — MOBILE RESPONSIVE ENGINE (FAANG GRADE)
+   ═══════════════════════════════════════════════════════════════════════════ */
+.services-mobile-wrapper {
+  padding-top: clamp(5rem, 14vw, 8rem);
+  padding-bottom: clamp(6rem, 16vw, 10rem);
+  padding-left: clamp(1.25rem, 5.5vw, 2.5rem);
+  padding-right: clamp(1.25rem, 5.5vw, 2.5rem);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.services-mobile-container {
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.services-mobile-card {
+  background-color: #ffffff;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  border: 1px solid #E5E1DC;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.05);
+}
+
+.services-mobile-card-body {
+  padding: clamp(1.5rem, 5.5vw, 2.25rem);
+  box-sizing: border-box;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   HERO CTA BUTTONS — FAANG-GRADE PILL GEOMETRY & PADDING
+   ═══════════════════════════════════════════════════════════════════════════ */
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 36px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 9999px;
+  white-space: nowrap;
+  line-height: 1;
+  box-sizing: border-box;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+
+@media (min-width: 640px) {
+  .hero-btn {
+    padding: 18px 44px;
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-btn {
+    padding: 20px 48px;
+    font-size: 14px;
+  }
+}
+
+.hero-btn-primary {
+  background-color: var(--accent);
+  color: #ffffff;
+  border: 1px solid var(--accent);
+}
+
+.hero-btn-primary:hover {
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
+  box-shadow: 0 10px 30px rgba(255, 77, 46, 0.35);
+  transform: translateY(-2px);
+}
+
+.hero-btn-secondary {
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.hero-btn-secondary:hover {
+  background-color: #ffffff;
+  color: var(--bg-dark);
+  border-color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CONTACT CTA BUTTON — LUXURY PILL GEOMETRY & BREATHING ROOM
+   ═══════════════════════════════════════════════════════════════════════════ */
+.contact-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 36px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 9999px;
+  white-space: nowrap;
+  line-height: 1;
+  box-sizing: border-box;
+  cursor: pointer;
+  background-color: #ffffff;
+  color: var(--bg-dark);
+  border: 1px solid #ffffff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+
+@media (min-width: 640px) {
+  .contact-cta-btn {
+    padding: 18px 44px;
+    font-size: 13px;
+    gap: 14px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .contact-cta-btn {
+    padding: 20px 48px;
+    font-size: 14px;
+  }
+}
+
+.contact-cta-btn:hover {
+  background-color: var(--bg-dark);
+  color: #ffffff;
+  border-color: var(--bg-dark);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   NAVBAR CTA BUTTON — CLEAN PILL GEOMETRY & BREATHING ROOM
+   ═══════════════════════════════════════════════════════════════════════════ */
+.nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 9999px;
+  white-space: nowrap;
+  line-height: 1;
+  box-sizing: border-box;
+  cursor: pointer;
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+
+.nav-btn:hover {
+  background-color: #ffffff;
+  color: var(--bg-dark);
+  border-color: #ffffff;
+  transform: translateY(-1px);
 }

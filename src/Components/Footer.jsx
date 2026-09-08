@@ -1,63 +1,83 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FaLinkedinIn, FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
-import { ArrowUpRight } from "lucide-react";
-import logo from "../assets/logos/1.png";
+import { ArrowUp, ArrowUpRight, Globe } from "lucide-react";
+import logo from "../assets/logos/logo2.png";
 
 const Footer = () => {
   const year = new Date().getFullYear();
+  const [time, setTime] = useState("");
+
+  // Live IST time display for agency prestige
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      const options = { timeZone: "Asia/Kolkata", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: true };
+      setTime(new Intl.DateTimeFormat("en-US", options).format(now));
+    };
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   const scrollTo = (id) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <footer className="relative bg-[var(--bg-dark)] pt-32 pb-8 overflow-hidden border-t border-white/5">
-      {/* Massive Background Watermark */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none w-full text-center overflow-hidden mix-blend-overlay">
-        <span className="font-display text-[22vw] font-black text-white/[0.03] uppercase tracking-tighter whitespace-nowrap">
+    <footer className="relative bg-[var(--bg-dark)] text-white pt-20 sm:pt-28 md:pt-36 pb-12 sm:pb-16 overflow-hidden border-t border-white/[0.08]">
+      {/* Subtle Background Watermark */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 pointer-events-none select-none w-full text-center overflow-hidden">
+        <span className="font-display text-[18vw] font-black text-white/[0.025] uppercase tracking-tighter whitespace-nowrap block leading-none">
           WebKraftery
         </span>
       </div>
 
       <div className="premium-container relative z-10">
         
-        {/* Massive Email CTA */}
-        <div className="mb-24 md:mb-32 flex flex-col items-center lg:items-start text-center lg:text-left">
-          <p className="font-display text-[12px] font-bold tracking-[0.3em] text-[var(--accent)] uppercase mb-6">
-            Got a project in mind?
-          </p>
-          <a 
-            href="mailto:info@webkraftery.com" 
-            className="group flex flex-col md:flex-row items-center gap-6 md:gap-12 w-full lg:w-max"
-          >
-            <h2 className="font-display text-[clamp(1.5rem,7vw,7rem)] font-black text-white tracking-[-0.03em] transition-colors duration-500 group-hover:text-white/70 break-all md:break-normal text-center lg:text-left">
-              info@webkraftery.com
-            </h2>
-            <div className="w-14 h-14 md:w-24 md:h-24 rounded-full border border-white/20 flex items-center justify-center bg-white/5 group-hover:bg-[var(--accent)] group-hover:border-[var(--accent)] transition-all duration-500 shrink-0">
-              <ArrowUpRight className="text-white group-hover:rotate-45 transition-transform duration-500 w-6 h-6 md:w-10 md:h-10" />
-            </div>
-          </a>
-        </div>
-
-        {/* Info Grid */}
-        <div className="flex flex-col md:flex-row justify-between gap-12 lg:gap-16 mb-20 md:pr-12 text-center md:text-left">
+        {/* Main Grid: 4 Strategic Columns */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-12 sm:gap-14 lg:gap-16 pb-16 sm:pb-20 md:pb-24 border-b border-white/[0.12]">
           
-          {/* Column 1: Navigation */}
-          <div className="w-full md:w-auto flex flex-col items-center md:items-start">
-            <h4 className="font-display text-[11px] font-bold tracking-[0.2em] text-white/40 uppercase mb-8">
+          {/* Col 1: Brand & Studio Status (5 cols on desktop) */}
+          <div className="sm:col-span-2 lg:col-span-5 flex flex-col items-start text-left">
+            <div className="flex items-center gap-3.5 mb-6 group cursor-pointer" onClick={scrollToTop}>
+              <img src={logo} alt="WebKraftery" className="w-10 h-10 sm:w-11 sm:h-11 object-contain group-hover:scale-105 transition-transform duration-300" />
+              <span className="font-display font-black text-[22px] sm:text-[24px] tracking-[0.08em] text-white uppercase">
+                WebKraftery<span className="text-[var(--accent)]">.</span>
+              </span>
+            </div>
+
+            <p className="text-[#D1CBC4] text-[14px] sm:text-[15px] leading-[1.75] max-w-[420px] font-normal mb-8">
+              Engineering high-performance web applications, immersive 3D environments, and iconic digital brand systems for ambitious global companies.
+            </p>
+           
+          </div>
+
+          {/* Col 2: Navigation Sitemap (2 cols on desktop) */}
+          <div className="lg:col-span-2 flex flex-col items-start text-left">
+            <h4 className="font-display text-[12px] sm:text-[13px] font-bold tracking-[0.22em] text-[var(--accent)] uppercase mb-5 sm:mb-6">
               Navigation
             </h4>
-            <ul className="space-y-4 flex flex-col items-center md:items-start">
-              {["services", "expertise", "testimonials", "contact"].map((id) => (
-                <li key={id}>
+            <ul className="space-y-3 sm:space-y-3.5 flex flex-col items-start">
+              {[
+                { label: "Home", action: scrollToTop },
+                { label: "Our Capabilities", action: () => scrollTo("services") },
+                { label: "Core Expertise", action: () => scrollTo("expertise") },
+                { label: "Client Reviews", action: () => scrollTo("testimonials") },
+                { label: "Start a Project", action: () => scrollTo("contact") },
+              ].map((item) => (
+                <li key={item.label}>
                   <button
-                    onClick={() => scrollTo(id)}
-                    className="group flex items-center text-[15px] text-white hover:text-[var(--accent)] transition-colors capitalize font-medium"
+                    onClick={item.action}
+                    className="group flex items-center text-[14px] sm:text-[15px] text-[#EAE5DF] hover:text-white transition-colors text-left font-medium"
                   >
-                    <span className="relative pb-1">
-                      {id === "contact" ? "Get in Touch" : id}
-                      <span className="absolute bottom-0 left-0 w-full h-[1px] bg-[var(--accent)] scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500 ease-out" />
+                    <span className="relative pb-0.5">
+                      {item.label}
+                      <span className="absolute bottom-0 left-0 w-full h-[1px] bg-[var(--accent)] scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-300 ease-out" />
                     </span>
                   </button>
                 </li>
@@ -65,55 +85,79 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Column 2: Socials */}
-          <div className="w-full md:w-auto flex flex-col items-center md:items-start mt-8 md:mt-0">
-            <h4 className="font-display text-[11px] font-bold tracking-[0.2em] text-white/40 uppercase mb-8">
-              Socials
+          {/* Col 3: Services / Capabilities (2 cols on desktop) */}
+          <div className="lg:col-span-2 flex flex-col items-start text-left">
+            <h4 className="font-display text-[12px] sm:text-[13px] font-bold tracking-[0.22em] text-[var(--accent)] uppercase mb-5 sm:mb-6">
+              Expertise
             </h4>
-            <ul className="space-y-4 flex flex-col items-center md:items-start">
-              {[
-                { name: "LinkedIn", icon: <FaLinkedinIn size={16} />, href: "#" },
-                { name: "Twitter / X", icon: <FaTwitter size={16} />, href: "#" },
-                { name: "Instagram", icon: <FaInstagram size={16} />, href: "#" },
-                { name: "GitHub", icon: <FaGithub size={16} />, href: "#" },
-              ].map((s, i) => (
-                <li key={i}>
-                  <a
-                    href={s.href}
-                    className="group flex items-center gap-4 text-[15px] text-white hover:text-[var(--accent)] transition-colors font-medium"
-                  >
-                    <span className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[var(--accent)]/20 transition-colors duration-500">
-                      {s.icon}
-                    </span>
-                    <span className="relative pb-1">
-                      {s.name}
-                      <span className="absolute bottom-0 left-0 w-full h-[1px] bg-[var(--accent)] scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500 ease-out" />
-                    </span>
-                  </a>
-                </li>
-              ))}
+            <ul className="space-y-3 sm:space-y-3.5 flex flex-col items-start text-[14px] sm:text-[15px] text-[#D1CBC4] font-medium">
+              <li className="hover:text-white transition-colors cursor-default">Digital Platforms</li>
+              <li className="hover:text-white transition-colors cursor-default">Immersive 3D</li>
+              <li className="hover:text-white transition-colors cursor-default">Motion & WebGL</li>
+              <li className="hover:text-white transition-colors cursor-default">Design Systems</li>
+              <li className="hover:text-white transition-colors cursor-default">Performance SEO</li>
             </ul>
           </div>
-        </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-white/10 pt-10 pb-4 flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
-          
-          {/* Logo */}
-          <div className="flex-shrink-0 w-full md:w-auto flex justify-center md:justify-start">
-            <img src={logo} alt="WebKraftery" className="h-10 md:h-12 w-auto object-contain" />
+          {/* Col 4: Direct Channels & Socials (3 cols on desktop) */}
+          <div className="lg:col-span-3 flex flex-col items-start text-left">
+            <h4 className="font-display text-[12px] sm:text-[13px] font-bold tracking-[0.22em] text-[var(--accent)] uppercase mb-5 sm:mb-6">
+              Connect
+            </h4>
+            
+            <a 
+              href="mailto:info@webkraftery.com" 
+              className="text-[16px] sm:text-[17px] font-display font-semibold text-white hover:text-[var(--accent)] transition-colors mb-2.5 flex items-center gap-1.5 group"
+            >
+              info@webkraftery.com
+              <ArrowUpRight size={16} className="text-white/80 group-hover:text-[var(--accent)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </a>
+
+            <a 
+              href="tel:+919899794119" 
+              className="text-[15px] sm:text-[16px] text-[#D1CBC4] hover:text-white transition-colors mb-6 font-medium"
+            >
+              +91 989 979 4119
+            </a>
+
+            {/* Social Pill Icons */}
+            <div className="flex items-center gap-3">
+              {[
+                { name: "LinkedIn", icon: <FaLinkedinIn size={15} />, href: "https://linkedin.com" },
+                { name: "Twitter / X", icon: <FaTwitter size={15} />, href: "https://twitter.com" },
+                { name: "Instagram", icon: <FaInstagram size={15} />, href: "https://instagram.com" },
+                { name: "GitHub", icon: <FaGithub size={15} />, href: "https://github.com" },
+              ].map((s) => (
+                <a
+                  key={s.name}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.name}
+                  className="w-10 h-10 rounded-full border border-white/20 bg-white/[0.06] flex items-center justify-center text-white hover:text-white hover:bg-[var(--accent)] hover:border-[var(--accent)] transition-all duration-300 shadow-sm"
+                >
+                  {s.icon}
+                </a>
+              ))}
+            </div>
           </div>
 
-          <div className="flex flex-wrap justify-center md:justify-end gap-6 md:gap-8 text-[13px] text-white/40 font-medium w-full md:w-auto">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+        </div>
+
+        {/* Bottom Credits & Back to Top Bar */}
+        <div className="pt-10 sm:pt-14 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 text-left">
+          
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 text-[12px] sm:text-[13px] text-[#A8A199]">
+            <span>© {year} WebKraftery Studio. All rights reserved.</span>
+            <div className="flex items-center gap-4 text-[#D1CBC4]">
+              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+              <span>•</span>
+              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+            </div>
           </div>
 
-          <p className="text-white/40 text-[13px] font-medium w-full md:w-auto mt-2 md:mt-0">
-            © {year} WebKraftery. All rights reserved.
-          </p>
-          
         </div>
+
       </div>
     </footer>
   );
